@@ -1,0 +1,13 @@
+{
+    "documento": "1097910340",
+    "nombres": "Oviel Felipe",
+    "apellidos": "Mendoza Pineda",
+    "telefono": {
+        "movil": 3165880900,
+        "fijo": 123123456
+    },
+    "direccion": "Cir 36a 104-128 Altos de la Pradera T3-1204",
+    "acudiente": "Martiza Pineda Celis",
+    "estado": "Aspirante",
+    "ruta": ""
+}
