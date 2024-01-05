@@ -2,6 +2,8 @@ from persona import *
 import os
 import json
 import pathlib
+from visuals import *
+clear()
 
 registroAspirantes = {}
 rutas={
@@ -23,7 +25,10 @@ def from_JSOn():
         datos = json.loads(file.read())
         documento = datos.get('documento')      
         acum[documento] = datos
-  return datos
+  return acum
  
 
-print(from_JSOn())
+registroAspirantes = from_JSOn()
+
+clear()
+print((registroAspirantes))
