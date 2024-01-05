@@ -19,3 +19,6 @@ class Entrenador(Persona):
         super().__init__(documento, nombres, apellidos, telefono, direccion)
         self.ruta = ruta
         self.horario = horario
+
+
+
