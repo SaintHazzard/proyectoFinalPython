@@ -11,3 +11,7 @@ for i in registroAspirantes:
   print('-'*50)
   registroAspirantes[i].showData()
   
+
+
+registroAspirantes['0'].crearJson()
+registroAspirantes['1'].crearJson()
