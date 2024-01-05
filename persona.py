@@ -1,15 +1,15 @@
 class Persona:
-    def __init__(self, documento, nombres, apellidos, telefono, direccion) -> object:
+    def __init__(self, documento, nombres, apellidos, movil,fijo, direccion) -> object:
         self.documento = documento
         self.nombres = nombres
         self.apellidos = apellidos
-        self.telefono = telefono
+        self.telefonos = {'movil': movil,
+                          'fijo': fijo}
         self. direccion = direccion
     
-    def showData(self,):
-         print(f'Documento: {self.documento}\nNombre: {self.nombres}\nApellidos: {self.apellidos}\n Estado: {self.estado}\nRuta: {self.ruta}')
+    
     def showData(self):
-         print(f'Documento: {self.documento}\nNombre: {self.nombres}\nEstado: {self.estado}\nRuta: {self.ruta}')
+         print(f'Documento: {self.documento}\nNombre: {self.nombres}\nApellidos: {self.apellidos}\nRuta: {self.telefonos}')
 
 class Camper(Persona):
     def __init__(self, documento, nombres, apellidos, 
@@ -24,6 +24,8 @@ class Entrenador(Persona):
         super().__init__(documento, nombres, apellidos, telefono, direccion)
         self.ruta = ruta
         self.horario = horario
+    def showData(self,):
+      print(f'Documento: {self.documento}\nNombre: {self.nombres}\nApellidos: {self.apellidos}\n Estado: {self.estado}\nRuta: {self.ruta}')
 
 
 
