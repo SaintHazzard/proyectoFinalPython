@@ -1,5 +1,5 @@
-from persona import * 
-from visuals import *
+from classes.persona import * 
+from toolsTest.visuals import *
 from processJsonToMain import *
 
 registroAspirantes = {
@@ -9,10 +9,11 @@ rutas={
   
 }
 
-temporalDatosJson = from_JSOn()
-procesarJsonToCamper(registroAspirantes,temporalDatosJson)
+
 
 while True:
+  temporalDatosJson = from_JSOn()
+  procesarJsonToCamper(registroAspirantes,temporalDatosJson)
   elec = input('Eleccion')
   if elec == '5':
     for documento in registroAspirantes:
