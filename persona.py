@@ -5,4 +5,9 @@ class Persona:
         self.apellidos = apellidos
         self.telefono = telefono
         self. direccion = direccion
-        
+
+class Camper(Persona):
+    def __init__(self, documento, nombres, apellidos, telefono, direccion, acudiente, estado) -> Persona:
+        super().__init__(documento, nombres, apellidos, telefono, direccion)
+        self.acudiente = acudiente
+        self.estado = estado
