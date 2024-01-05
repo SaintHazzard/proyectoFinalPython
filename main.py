@@ -11,9 +11,7 @@ rutas={
 }
 registroAspirantes['0']= Camper('1097910340', 'Oviel 2', 'Mendoza Pineda',3165880900,123123456, 'Cir 36a 104-128 Altos de la Pradera T3-1204', 'Martiza Pineda Celis', 'Aspirante','')
 
-for i in registroAspirantes:
-  print('-'*50)
-  registroAspirantes[i].showData()
+
   
 def from_JSOn():
   acum = {}
@@ -28,7 +26,11 @@ def from_JSOn():
         acum[documento] = datos
   return acum
  
-print(registroAspirantes)
-registroAspirantes = from_JSOn()
+temporalDatosJson = from_JSOn()
 
-print((registroAspirantes))
+# print(temporalDatosJson)
+for ind in temporalDatosJson:
+  print(temporalDatosJson[ind])
+  registroAspirantes[ind] = Camper(temporalDatosJson[ind]['documento'])
+    
+
