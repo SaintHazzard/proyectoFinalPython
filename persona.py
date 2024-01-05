@@ -18,14 +18,15 @@ class Camper(Persona):
         self.acudiente = acudiente
         self.estado = estado
         self.ruta = ruta
+    def showData(self,):
+      print(f'Documento: {self.documento}\nNombre: {self.nombres}\nApellidos: {self.apellidos}\n Estado: {self.estado}\nRuta: {self.ruta}')
         
 class Entrenador(Persona):
     def __init__(self, documento, nombres, apellidos, telefono, direccion, ruta, horario) -> Persona: #Investigar si es necesario esto
         super().__init__(documento, nombres, apellidos, telefono, direccion)
         self.ruta = ruta
         self.horario = horario
-    def showData(self,):
-      print(f'Documento: {self.documento}\nNombre: {self.nombres}\nApellidos: {self.apellidos}\n Estado: {self.estado}\nRuta: {self.ruta}')
+    
 
 
 
