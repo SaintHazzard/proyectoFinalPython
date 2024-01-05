@@ -9,6 +9,7 @@ registroAspirantes = {}
 rutas={
   
 }
+registroAspirantes['0']= Camper('1097910340', 'Oviel 2', 'Mendoza Pineda',3165880900,123123456, 'Cir 36a 104-128 Altos de la Pradera T3-1204', 'Martiza Pineda Celis', 'Aspirante','')
 
 for i in registroAspirantes:
   print('-'*50)
@@ -27,8 +28,7 @@ def from_JSOn():
         acum[documento] = datos
   return acum
  
-
+print(registroAspirantes)
 registroAspirantes = from_JSOn()
 
-clear()
 print((registroAspirantes))
