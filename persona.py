@@ -26,7 +26,7 @@ class Persona:
       ruta_archivo = f"jsonData/{self.nombres}.json"
       # Guardar los datos como JSON en un archivo
       with open(ruta_archivo, 'w+') as archivo_json:
-          json.dump(self.to_JSON(), archivo_json)
+          json.dump(self.to_JSON(), archivo_json,indent=4)
 
       print(f"Datos guardados en {ruta_archivo}")
     
@@ -39,6 +39,19 @@ class Camper(Persona):
     def showData(self):
       super().showData()
       print(f'Estado: {self.estado}\nRuta: {self.ruta}')
+    def to_JSON(self):
+       return{
+            "documento": self.documento,
+            "nombres": self.nombres,
+            "apellidos": self.apellidos,
+            "telefono": self.telefonos,
+            "direccion": self.direccion,
+            "acudiente": self.acudiente,
+            "estado": self.estado,
+            "ruta": self.ruta
+        }   
+       
+       
         
 class Entrenador(Persona):
     def __init__(self, documento, nombres, apellidos, movil,fijo, direccion, ruta, horario) -> Persona: #Investigar si es necesario esto
