@@ -29,7 +29,7 @@ class Persona:
           json.dump(self.to_JSON(), archivo_json)
 
       print(f"Datos guardados en {ruta_archivo}")
-
+    
 class Camper(Persona):
     def __init__(self, documento, nombres, apellidos, movil,fijo, direccion, acudiente, estado, ruta) -> Persona: #Investigar si es necesario esto
         super().__init__(documento, nombres, apellidos, movil,fijo, direccion)
