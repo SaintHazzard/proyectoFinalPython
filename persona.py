@@ -6,7 +6,8 @@ class Persona:
         self.telefonos = {'movil': movil,
                           'fijo': fijo}
         self. direccion = direccion
-    
+    def getNombreCompleto(self):
+      return f'{self.nombres} {self.apellidos}'
     
     def showData(self):
          print(f'Documento: {self.documento}\nNombre: {self.nombres}\nApellidos: {self.apellidos}\nRuta: {self.telefonos}')
@@ -17,7 +18,7 @@ class Camper(Persona):
         self.acudiente = acudiente
         self.estado = estado
         self.ruta = ruta
-    def showData(self,):
+    def showData(self):
       print(f'Documento: {self.documento}\nNombre: {self.nombres}\nApellidos: {self.apellidos}\n Estado: {self.estado}\nRuta: {self.ruta}')
         
 class Entrenador(Persona):
