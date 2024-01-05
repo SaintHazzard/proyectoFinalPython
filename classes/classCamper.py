@@ -10,7 +10,7 @@ class Camper(Persona):
       print(f'Estado: {self.estado}\nRuta: {self.ruta}')
       
       
-      
+    # crea un json con el objeto
     @classmethod
     def to_JSON(self):
        return{
@@ -23,6 +23,9 @@ class Camper(Persona):
             "estado": self.estado,
             "ruta": self.ruta
         }
+       
+       
+    # clc es como decir Camper(relleno), es decir instancia la clase con el diccionario que le pase
     @classmethod
     def from_dict(cls, data):
         return cls(
