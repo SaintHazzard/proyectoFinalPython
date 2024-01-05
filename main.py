@@ -10,3 +10,4 @@ registroAspirantes['1'] = Camper('1098808399','Alejandro','Martinez Santos',3214
 for i in registroAspirantes:
   print('-'*50)
   registroAspirantes[i].showData()
+  
