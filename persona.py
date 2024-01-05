@@ -5,6 +5,9 @@ class Persona:
         self.apellidos = apellidos
         self.telefono = telefono
         self. direccion = direccion
+    
+    def showData(self, registroAspirantes):
+         print(f'Documento: {self.documento}\nNombre: {self.nombre}\n Estado: {self.estado}\nRuta: {self.ruta}')
 
 class Camper(Persona):
     def __init__(self, documento, nombres, apellidos, 
