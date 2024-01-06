@@ -53,7 +53,7 @@ class Camper(Persona):
         )
       
     @classmethod
-    def solicitar_datos_camper(registroAspirantes:dict):
+    def solicitar_datos_camper(cls):
       documento = input("Ingrese el documento: ")
       nombres = input("Ingrese los nombres: ")
       apellidos = input("Ingrese los apellidos: ")

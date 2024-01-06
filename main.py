@@ -9,7 +9,7 @@ registroAspirantes = {
 rutas={
   
 }
-menu = "1. Registrar Camp\n2. Registrar prueba\n5. Listar personas registradas"
+menu = "1. Registrar Camper\n2. Registrar prueba\n5. Listar personas registradas"
 
 while True:
   print(menu)
@@ -17,8 +17,9 @@ while True:
   procesarJsonToCamper(registroAspirantes,temporalDatosJson)
   elec = input('Eleccion: ')
   if elec == '1':
-    documentoCamper,*demasdatos=Camper.solicitar_datos_camper(registroAspirantes)
-    registroAspirantes[documentoCamper] = Camper(*demasdatos)
+    documentoCamper,*demasdatos=Camper.solicitar_datos_camper()
+    registroAspirantes[documentoCamper] = Camper(documentoCamper,*demasdatos)
+    registroAspirantes[documentoCamper].crearJson()
     pass
   if elec == '5':
     for documento in registroAspirantes:
