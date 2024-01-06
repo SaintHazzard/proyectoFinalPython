@@ -1,6 +1,9 @@
 from classes.persona import *
 class Camper(Persona):
-    def __init__(self, documento, nombres, apellidos, movil,fijo, direccion, acudiente, estado='Inscrito', ruta =None) -> Persona: #Investigar si es necesario esto
+    """Instanciamiento base
+
+    """
+    def __init__(self, documento, nombres, apellidos, movil,fijo, direccion, acudiente, estado='Inscrito', ruta =None) -> Persona:
         super().__init__(documento, nombres, apellidos, movil,fijo, direccion)
         self.acudiente = acudiente
         self.estado = estado
@@ -8,7 +11,7 @@ class Camper(Persona):
         self.notas = {'nota teorica': 0, 'nota practica': 0}
     
     def __init__(self, documento, nombres, apellidos, movil,fijo, direccion, acudiente,notaTeorica=0,notaPractica=0, estado='Inscrito', ruta =None) -> Persona: 
-      """Instanciamiento para convertir de json a objeto
+      """Instanciamiento para convertir de json a objeto con notas
       """
       super().__init__(documento, nombres, apellidos, movil,fijo, direccion)
       self.acudiente = acudiente
@@ -48,13 +51,15 @@ class Camper(Persona):
         json.dump(sujeto,archivo_json,indent=4)
       print('Nota registrada')
       # print(self.nombres)
-      if self.setState() >= 60:
-        # print('Entra')
+      promedio = self.setState()
+      if  promedio >= 60:
+        print(f"El camper ha sido aprobado con nota promedio de:  {round(promedio,2)}")
         self.estado = 'Aprobado'
         sujeto['estado'] = self.estado
         with open(ruta_archivo,'w') as archivo_json:
           json.dump(sujeto,archivo_json,indent=4)
-      
+      if self.notas['nota practica'] and self.notas['nota teorica'] and promedio < 60:
+        print(f"El camper ha sido reprobado con nota promedio de:  {round(promedio,2)}")
     # crea un json con el objeto
     
     def to_JSON(self):

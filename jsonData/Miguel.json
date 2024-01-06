@@ -1,0 +1,17 @@
+{
+    "documento": "123",
+    "nombres": "Miguel",
+    "apellidos": "Cuck",
+    "telefono": {
+        "movil": "3214",
+        "fijo": "4321"
+    },
+    "direccion": "Calle 27",
+    "acudiente": "Benita",
+    "estado": "Inscrito",
+    "ruta": null,
+    "notas": {
+        "nota teorica": 50,
+        "nota practica": 1
+    }
+}
