@@ -5,16 +5,16 @@ class Camper(Persona):
         self.acudiente = acudiente
         self.estado = estado
         self.ruta = ruta
-    @classmethod
-    def showData(self):
+        
+    def showData(cls):
       """Muestra en un formato legible y ordenado la informacion del objeto, en este caso del Camper
       """
       super().showData()
-      print(f'Estado: {self.estado}\nRuta: {self.ruta}')
+      print(f'Estado: {cls.estado}\nRuta: {cls.ruta}')
       
       
     # crea un json con el objeto
-    @classmethod
+    
     def to_JSON(self):
        return{
             "documento": self.documento,
