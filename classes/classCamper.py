@@ -5,9 +5,6 @@ class Camper(Persona):
         self.acudiente = acudiente
         self.estado = estado
         self.ruta = ruta
-        
-        
-        
     @classmethod
     def showData(self):
       """Muestra en un formato legible y ordenado la informacion del objeto, en este caso del Camper
