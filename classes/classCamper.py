@@ -1,25 +1,13 @@
 from classes.persona import *
 class Camper(Persona):
-    
-    def __init__(self, documento, nombres, apellidos, movil,fijo, 
-        
-                 direccion, acudiente, estado='Inscrito', ruta =None) -> Persona:
-        """Instanciamiento base"""
-        super().__init__(documento, nombres, apellidos, movil,fijo, direccion)
+    def __init__(self, documento, nombres, apellidos, movil, fijo, direccion, acudiente,
+                 notaTeorica=None, notaPractica=None, estado='Inscrito', ruta=None) -> Persona:
+        """Instanciamiento de Camper"""
+        super().__init__(documento, nombres, apellidos, movil, fijo, direccion)
         self.acudiente = acudiente
         self.estado = estado
         self.ruta = ruta
-        self.notas = {'nota teorica': 0, 'nota practica': 0}
-    
-    def __init__(self, documento, nombres, apellidos, movil,fijo, direccion, acudiente,
-                 notaTeorica=0,notaPractica=0, estado='Inscrito', ruta =None) -> Persona: 
-      """Instanciamiento para convertir de json a objeto con notas
-      """
-      super().__init__(documento, nombres, apellidos, movil,fijo, direccion)
-      self.acudiente = acudiente
-      self.estado = estado
-      self.ruta = ruta
-      self.notas = {'nota teorica': notaTeorica, 'nota practica': notaPractica}
+        self.notas = {'nota teorica': notaTeorica or 0, 'nota practica': notaPractica or 0}
         
     def showData(self):
       """Muestra en un formato legible y ordenado la informacion del objeto, en este caso del Camper
@@ -39,7 +27,7 @@ class Camper(Persona):
       return self.estado
     
     def setNota(self):
-      ruta_archivo = f"jsonData/{self.nombres}.json"
+      ruta_archivo = f"jsonData/{self.documento}.json"
       with open(ruta_archivo, 'r') as archivo_json:
         sujeto = json.load(archivo_json)
       elec=input('Se puede registrar nota, que nota desea registrar\n\t1. Nota teorica\n\t2. Nota practica\n')
@@ -80,7 +68,7 @@ class Camper(Persona):
        
     # clc es como decir Camper(relleno), es decir instancia la clase con el argumento @data que se le suministra
     @classmethod
-    def from_dict(cls, data : dict) -> Persona:
+    def from_dict(self, data : dict) -> Persona:
       """Este metodo convierte @data que se espera sea un archivo JSON-diccionario a un objeto 
          para ser almacenado en el diccionario del hilo main
 
@@ -90,19 +78,8 @@ class Camper(Persona):
       Returns:
           _Camper_: una instancia de la clase @Camper rellenada
       """
-      return cls(
-            data[next(iter(data))],
-            data["nombres"],
-            data["apellidos"],
-            data["telefono"]["movil"],
-            data["telefono"]["fijo"],
-            data["direccion"],
-            data['acudiente'],
-            data["notas"]['nota teorica'],
-            data["notas"]['nota practica'],
-            data["estado"],
-            data["ruta"]
-        )
+      for clave, valor in data.items():
+            setattr(self, clave, valor)
       
       
     @classmethod

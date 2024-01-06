@@ -4,31 +4,27 @@ rutas = {
   
 }
 class RutaEntrenamiento:
-  def __init__(self, nombre, modulos, sgdbPrincipal, sgdbAlternativo):
-      self.nombre = nombre
+  def __init__(self, nombres, modulos, sgdbPrincipal, sgdbAlternativo):
+      self.nombres = nombres
       self.modulos = modulos
       self.sgdbPrincipal = sgdbPrincipal
       self.sgdbAlternativo = sgdbAlternativo
   
   def printRutaEntrenamiento(self):
-    print("Nombre de la ruta:", self.nombre)
+    print("Nombre de la ruta:", self.nombres)
     print("Modulos")
     for modulo in self.modulos:
         print(f"\t : {', '.join(modulo)}")
     print("SGDB Principal:", self.sgdbPrincipal)
     print("SGDB Alternativo:", self.sgdbAlternativo)
-  def showDataRuta(self):
-    print(self.nombre)
-    print(self.modulos)
     
-    
-  def crearJson(self):
-    # Ruta del archivo donde guardar el JSON
-    ruta_archivo = f"jsonDataRutas/{self.nombre}.json"
-    print(type(self.modulos))
-    with open(ruta_archivo, 'w+') as archivo_json:
-        json.dump(self.to_JSON(), archivo_json,indent=4)
-    print(f'Ruta registrada satisfactoriamente')
+  def to_JSON(self):
+       return{
+            "nombres": self.nombres,
+            "modulos": self.modulos,
+            "sgdbPrincipal": self.sgdbPrincipal,
+            "sgdbAlternativo": self.sgdbAlternativo,
+        }
     
     
   @classmethod
@@ -43,15 +39,15 @@ class RutaEntrenamiento:
           _Camper_: una instancia de la clase @Camper rellenada
       """
       return cls(
-            data['nombre'],
+            data['nombres'],
             data['modulos'],
             data["sgdbPrincipal"],
             data['sgdbAlternativo']
         )
 
 class Modulo:
-    def __init__(self, nombre, temas):
-        self.nombre = nombre
+    def __init__(self, nombres, temas):
+        self.nombres = nombres
         self.temas = temas
     
     

@@ -14,15 +14,7 @@ class Persona:
          print(f'Documento: {self.documento}\nNombre: {self.nombres}\nApellidos: {self.apellidos}\nTelefonos: \n\tMovil: {self.telefonos["movil"]}\n\tFijo: {self.telefonos["fijo"]}')
          
     
-    def crearJson(self):
-        # Ruta del archivo donde guardarás el JSON
-      ruta_archivo = f"jsonData/{self.nombres}.json"
-      # Guardar los datos como JSON en un archivo
-      with open(ruta_archivo, 'w+') as archivo_json:
-          json.dump(self.to_JSON(), archivo_json,indent=4)
-
-      # print(f"Datos guardados en {ruta_archivo}")
-      print(f'Persona registrada satisfactoriamente')
+    
 
 
 

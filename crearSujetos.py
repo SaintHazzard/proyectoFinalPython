@@ -1,4 +1,6 @@
 from classes.classCamper import *
+from processJsonToMain import *
+
 registroAspirantes={}
 
 
@@ -30,5 +32,9 @@ registroAspirantes['1'] = Camper('1',
                                   'Monviso',
                                   'Mi madresita')
 
-for i in registroAspirantes:
-  registroAspirantes[i].crearJson()
+
+  
+
+if __name__ == "__main__":
+  for i in registroAspirantes:
+    crearJson(registroAspirantes[i],f"{CARPETAS[0]}/{i}.json")

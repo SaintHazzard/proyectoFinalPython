@@ -1,12 +1,12 @@
 areas = {}
 import json
 class areasEntrenamiento:
-  def __init__(self,nombre) -> object:
-    self.nombre = nombre
+  def __init__(self,nombres) -> object:
+    self.nombres = nombres
     # self.ruta = ''
     self.capacidad = {"horarios" : {"Morning":{"integrantes":{},"capacidad":0}, "Afternoon": {"integrantes":{},"capacidad":0}}}
-  def __init__(self,nombre,capacidad) -> object:
-    self.nombre = nombre
+  def __init__(self,nombres,capacidad=0) -> object:
+    self.nombres = nombres
     # self.ruta = ''
     self.capacidad = {"horarios" : {"Morning":{"integrantes":{},"capacidad":0}, "Afternoon": {"integrantes":{},"capacidad":0}}}
   def printInfoArea(self):
@@ -16,19 +16,10 @@ class areasEntrenamiento:
     clavesHorarios= list(capacidad.keys())
     for i,hora in enumerate(capacidad):
         print(f"\t{hora}: \n\t\tIntegrandes: {capacidad[hora]['integrantes']}")
-    
-  def crearJson(self):
-        # Ruta del archivo donde guardarás el JSON
-      ruta_archivo = f"jsonDataAreas/{self.nombre}.json"
-      # Guardar los datos como JSON en un archivo
-      with open(ruta_archivo, 'w+') as archivo_json:
-          json.dump(self.to_JSON(), archivo_json,indent=4)
-      # print(f"Datos guardados en {ruta_archivo}")
-      print(f'Area registrada satisfactoriamente')
       
   def to_JSON(self):
        return{
-            "nombre": self.nombre,
+            "nombres": self.nombres,
             # "ruta": self.ruta,
             "capacidad": self.capacidad,
         }
