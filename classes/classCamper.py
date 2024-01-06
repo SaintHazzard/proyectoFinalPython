@@ -5,7 +5,13 @@ class Camper(Persona):
         self.acudiente = acudiente
         self.estado = estado
         self.ruta = ruta
+        
+        
+        
+    @classmethod
     def showData(self):
+      """Muestra en un formato legible y ordenado la informacion del objeto, en este caso del Camper
+      """
       super().showData()
       print(f'Estado: {self.estado}\nRuta: {self.ruta}')
       
@@ -25,10 +31,19 @@ class Camper(Persona):
         }
        
        
-    # clc es como decir Camper(relleno), es decir instancia la clase con el diccionario que le pase
+    # clc es como decir Camper(relleno), es decir instancia la clase con el argumento @data que se le suministra
     @classmethod
-    def from_dict(cls, data):
-        return cls(
+    def from_dict(cls, data : dict) -> Persona:
+      """Este metodo convierte @data que se espera sea un archivo JSON-diccionario a un objeto 
+         para ser almacenado en el diccionario del hilo main
+
+      Args:
+          data (_JSON_): Archivo JSON recibido como argumento para ser convertido en un objeto
+
+      Returns:
+          _Camper_: una instancia de la clase @Camper rellenada
+      """
+      return cls(
             data["documento"],
             data["nombres"],
             data["apellidos"],

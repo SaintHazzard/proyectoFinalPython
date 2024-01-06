@@ -23,12 +23,12 @@ def from_JSOn():
 
  
 def procesarJsonToCamper(registroAspirantes,temporalDatosJson):
-  """Convierte el dict recibido como temporalDatosJson en objetos para ser guardados en el
+  """Convierte el dict recibido como @temporalDatosJson en objetos para ser guardados en el
      diccionario del hilo main
 
   Args:
       registroAspirantes (_dict_): es el diccionario del hilo main, donde guardo todos los objetos.
-      temporalDatosJson (_dict_): es el return de la funcion from_JSOn() que se encarga
+      temporalDatosJson (_dict_): es el return de la funcion @from_JSOn() que se encarga
                                   de leer los archivos con estructura selfnombre.JSON
   """
   for id in temporalDatosJson:
