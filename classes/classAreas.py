@@ -20,23 +20,7 @@ class areasEntrenamiento:
             "capacidad": self.capacidad,
         }
        
-  # clc es como decir Camper(relleno), es decir instancia la clase con el argumento @data que se le suministra
-  @classmethod
-  def from_dict(cls, data : dict):
-      """Este metodo convierte @data que se espera sea un archivo JSON-diccionario a un objeto 
-         para ser almacenado en el diccionario del hilo main
 
-      Args:
-          data (_JSON_): Archivo JSON recibido como argumento para ser convertido en un objeto
-
-      Returns:
-          _Camper_: una instancia de la clase @Camper rellenada
-      """
-      
-      return cls(
-            data[next(iter(data))],
-            data["capacidad"]
-        )
 
 
 

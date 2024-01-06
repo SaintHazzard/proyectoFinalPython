@@ -52,33 +52,8 @@ class Camper(Persona):
         print(f"El camper ha reprobado la admision con nota promedio de:  {round(promedio,2)}")
     # crea un json con el objeto
     
-    def to_JSON(self):
-      return json.dumps({
-          "documento": self.documento,
-          "nombres": self.nombres,
-          "apellidos": self.apellidos,
-          "telefono": self.telefonos,
-          "direccion": self.direccion,
-          "acudiente": self.acudiente,
-          "estado": self.estado,
-          "ruta": self.ruta,
-          "notas": self.notas
-      }, indent=4)
+    
        
-       
-    # clc es como decir Camper(relleno), es decir instancia la clase con el argumento @data que se le suministra
-    @classmethod
-    def from_dict(cls, data : dict) -> Persona:
-      """Este metodo convierte @data que se espera sea un archivo JSON-diccionario a un objeto 
-         para ser almacenado en el diccionario del hilo main
-
-      Args:
-          data (_JSON_): Archivo JSON recibido como argumento para ser convertido en un objeto
-
-      Returns:
-          _Camper_: una instancia de la clase @Camper rellenada
-      """
-      return cls(**data)
       
       
     @classmethod

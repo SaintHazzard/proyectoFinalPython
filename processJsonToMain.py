@@ -25,15 +25,7 @@ def from_JSOn(carpeta):
 
  
 def procesarJsonToCamper(CLASE,registroAspirantes,temporalDatosJson : dict):
-  """Convierte el dict recibido como @temporalDatosJson en objetos para ser guardados en el
-     diccionario del hilo main
 
-  Args:
-      registroAspirantes (_dict_): es el diccionario @registroAspirantes del hilo main, donde guardo todos los objetos.
-      temporalDatosJson (_dict_): es el return de la funcion @from_JSOn() que se encarga
-                                  de leer los archivos con estructura selfnombre.JSON
-  """
-  
   for dictOb in temporalDatosJson:
     firstKey = next(iter(temporalDatosJson[dictOb]))
     # print(type(temporalDatosJson[dictOb]), '  ', firstKey)
@@ -52,6 +44,45 @@ def crearJson(objeto,CARPETA):
   print(f"Datos guardados en {CARPETA}",end='')
   print(f' {objeto.nombres} registrada satisfactoriamente')
 
+
+# def to_JSON(diccionario:dict):
+#       return json.dumps({
+#           "documento": self.documento,
+#           "nombres": self.nombres,
+#           "apellidos": self.apellidos,
+#           "telefono": self.telefonos,
+#           "direccion": self.direccion,
+#           "acudiente": self.acudiente,
+#           "estado": self.estado,
+#           "ruta": self.ruta,
+#           "notas": self.notas
+#       }, indent=4)
+      
+
+
+print()
+
+
+
+
+def from_dict(cls, data : dict):
+    """Este metodo convierte @data que se espera sea un archivo JSON-diccionario a un objeto 
+        para ser almacenado en el diccionario del hilo main
+
+    Args:
+        data (_JSON_): Archivo JSON recibido como argumento para ser convertido en un objeto
+
+    Returns:
+        _Camper_: una instancia de la clase @Camper rellenada
+    """
+    return cls(
+          data['nombres'],
+          data['modulos'],
+          data["sgdbPrincipal"],
+          data['sgdbAlternativo']
+      )
+"""Funcion que simula el antiguo From_DICT que reinstanciaba la clase
+"""
 def reInstanciar(CLASE,diccionario):
   # print(CLASE.__dict__)
   # setattr(CLASE, 'documento', 1)
@@ -65,20 +96,3 @@ def reInstanciar(CLASE,diccionario):
       
       # print(f'clave: {clave}, valor: {valor}')
         
-          
-
-class MiClase:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-# Crear una instancia de la clase
-objeto = MiClase(x=10, y=20)
-
-# Mostrar la estructura interna de __dict__
-
-
-if __name__=="__main__":
-  print('hola')
-  print(dir(objeto.__dict__))
-  pass
