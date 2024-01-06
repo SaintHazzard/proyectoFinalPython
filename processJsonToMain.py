@@ -2,29 +2,28 @@ import os
 import json
 from classes.classCamper import *
 
-def from_JSOn():
+def from_JSOn(carpeta):
   """Lee todos los archivos JSON en la carpeta jsonData/ y los guarda en una variable temporal
 
   Returns:
       __dict: devuelve un diccionario temporal que se utiliza para convertir cada elemento de este en un objeto
   """
   temporalJson = {}
-  carpeta = 'jsonData/'
   contenidoJsonData = os.listdir(carpeta)
   for item in contenidoJsonData:
       ruta_completa = os.path.join(carpeta, item)
       with open(ruta_completa, 'r') as file:
         datos = json.load(file)
-        documento = datos.get(next(iter(datos))) 
+        firstKey = datos.get(next(iter(datos))) 
         # print(documento)
         # input('Esperar')
-        temporalJson[documento] = datos
+        temporalJson[firstKey] = datos
   return temporalJson
 
 
 
  
-def procesarJsonToCamper(registroAspirantes,temporalDatosJson):
+def procesarJsonToCamper(CLASE,registroAspirantes,temporalDatosJson):
   """Convierte el dict recibido como @temporalDatosJson en objetos para ser guardados en el
      diccionario del hilo main
 
@@ -36,7 +35,7 @@ def procesarJsonToCamper(registroAspirantes,temporalDatosJson):
   
   for dictOb in temporalDatosJson:
     firstKey = next(iter(temporalDatosJson[dictOb]))
-    registroAspirantes[dictOb] =  Camper.from_dict(temporalDatosJson[dictOb])
+    registroAspirantes[dictOb] =  CLASE.from_dict(temporalDatosJson[dictOb])
 
 
 

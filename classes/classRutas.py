@@ -30,14 +30,6 @@ class RutaEntrenamiento:
     print(f'Ruta registrada satisfactoriamente')
     
     
-  def to_JSON(self):
-    return{
-          "nombre": self.nombre,
-          "modulos": self.modulos,
-          "sgdbPrincipal" : self.sgdbPrincipal,
-          "sgdbAlternativo" : self.sgdbAlternativo,
-      }
-    
   @classmethod
   def from_dict(cls, data : dict):
       """Este metodo convierte @data que se espera sea un archivo JSON-diccionario a un objeto 

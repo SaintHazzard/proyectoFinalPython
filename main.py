@@ -3,20 +3,31 @@ from toolsTest.visuals import *
 from processJsonToMain import *
 from crearSujetos import  *
 from classes.classAreas import *
+from classes.classRutas import *
 
 
 registroAspirantes = {
   
 }
-rutas={'node': 'Ruta NodeJS', 'java' : 'Ruta Java', 'netcore' : 'Ruta NetCore'}
+rutasExistentes = {
+  
+}
+areas = {
+  
+}
+
+CARPETAS = ['jsonData/','jsonDataAreas/','jsonDataRutas/']
 
 menu = "1. Registrar Camper\n2. Registrar prueba\n5. Listar personas registradas\n0. Salir"
 
 while True:
   clear()
   print(menu)
-  temporalDatosJson = from_JSOn()
-  procesarJsonToCamper(registroAspirantes,temporalDatosJson)
+  # for carpeta in CARPETAS:
+  temporalDatosJson = from_JSOn(CARPETAS[0]);procesarJsonToCamper(Camper,registroAspirantes,temporalDatosJson)
+  temporalDatosJson = from_JSOn(CARPETAS[1]);procesarJsonToCamper(areasEntrenamiento, areas,temporalDatosJson)
+  temporalDatosJson = from_JSOn(CARPETAS[2]);procesarJsonToCamper(RutaEntrenamiento,rutasExistentes,temporalDatosJson)
+  # procesarJsonToCamper(rutasExistentes,)
   elec = input('Eleccion: ')
   if elec == '1':
     documentoCamper,*demasDatos=Camper.solicitar_datos_camper()
