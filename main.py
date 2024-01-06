@@ -51,7 +51,7 @@ if __name__=="__main__":
     if elec == '5':
       for documento in registroAspirantes:
         print('-'*50)
-        print(registroAspirantes[documento].showData())
+        print(registroAspirantes[documento])
         # registroAspirantes[documento].showData()
       wait()
     if elec=='6':
