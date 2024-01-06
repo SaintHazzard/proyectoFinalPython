@@ -15,7 +15,9 @@ def from_JSOn():
       ruta_completa = os.path.join(carpeta, item)
       with open(ruta_completa, 'r') as file:
         datos = json.load(file)
-        documento = datos.get('documento')      
+        documento = datos.get(next(iter(datos))) 
+        # print(documento)
+        # input('Esperar')
         temporalJson[documento] = datos
   return temporalJson
 
@@ -32,10 +34,9 @@ def procesarJsonToCamper(registroAspirantes,temporalDatosJson):
                                   de leer los archivos con estructura selfnombre.JSON
   """
   
-  for id in temporalDatosJson:
-    # print(temporalDatosJson[id])
-    documento = temporalDatosJson[id]['documento']
-    registroAspirantes[documento] =  Camper.from_dict(temporalDatosJson[id])
+  for dictOb in temporalDatosJson:
+    firstKey = next(iter(temporalDatosJson[dictOb]))
+    registroAspirantes[dictOb] =  Camper.from_dict(temporalDatosJson[dictOb])
 
 
 

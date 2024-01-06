@@ -91,7 +91,7 @@ class Camper(Persona):
           _Camper_: una instancia de la clase @Camper rellenada
       """
       return cls(
-            data["documento"],
+            data[next(iter(data))],
             data["nombres"],
             data["apellidos"],
             data["telefono"]["movil"],

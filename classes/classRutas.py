@@ -1,11 +1,12 @@
 import json
+# from processJsonToMain import *
 rutas = {
   
 }
 class RutaEntrenamiento:
   def __init__(self, nombre, modulos, sgdbPrincipal, sgdbAlternativo):
       self.nombre = nombre
-      self.modulos = {"modulos" : modulos}
+      self.modulos = modulos
       self.sgdbPrincipal = sgdbPrincipal
       self.sgdbAlternativo = sgdbAlternativo
   @classmethod
@@ -21,21 +22,12 @@ class RutaEntrenamiento:
     
     
   def crearJson(self):
-      # Ruta del archivo donde guardarás el JSON
+    # Ruta del archivo donde guardar el JSON
     ruta_archivo = f"jsonDataRutas/{self.nombre}.json"
     print(type(self.modulos))
-    # print(self.modulos['modulos'][0].showModulo())
-    # self.showDataRuta()
-    # for i,k in enumerate(self.modulos["modulos"]):
-    #   print(type(k.temas))
-    #   print(k.temas)
-    # print(self.modulos)
-    # print(Modulo.showModulo(self.modulos))
-    # Guardar los datos como JSON en un archivo
     with open(ruta_archivo, 'w+') as archivo_json:
         json.dump(self.to_JSON(), archivo_json,indent=4)
-    # # print(f"Datos guardados en {ruta_archivo}")
-    # print(f'Ruta registrada satisfactoriamente')
+    print(f'Ruta registrada satisfactoriamente')
     
     
   def to_JSON(self):
@@ -45,6 +37,24 @@ class RutaEntrenamiento:
           "sgdbPrincipal" : self.sgdbPrincipal,
           "sgdbAlternativo" : self.sgdbAlternativo,
       }
+    
+  @classmethod
+  def from_dict(cls, data : dict):
+      """Este metodo convierte @data que se espera sea un archivo JSON-diccionario a un objeto 
+         para ser almacenado en el diccionario del hilo main
+
+      Args:
+          data (_JSON_): Archivo JSON recibido como argumento para ser convertido en un objeto
+
+      Returns:
+          _Camper_: una instancia de la clase @Camper rellenada
+      """
+      return cls(
+            data['nombre'],
+            data['modulos'],
+            data["sgdbPrincipal"],
+            data['sgdbAlternativo']
+        )
 
 class Modulo:
     def __init__(self, nombre, temas):
@@ -58,17 +68,3 @@ class Modulo:
 
 
 
-modfundamentos = Modulo("Fundamentos de programación", ["Introducción a la algoritmia", "PSeInt", "Python"]).showModulo()
-modweb = Modulo("Programación Web", ["HTML", "CSS", "Bootstrap"]).showModulo()
-modformal = Modulo("Programación formal", ["Java", "JavaScript", "C#"]).showModulo()
-modbd = Modulo("Bases de datos", ["MySQL", "MongoDB", "PostgreSQL"]).showModulo()
-modbackend = Modulo("Backend", ["NetCore", "Spring Boot", "NodeJS", "Express"]).showModulo()
-
-
-rutas["Programación Web"] = RutaEntrenamiento("Programación Web", [modfundamentos, modweb], "MySQL", "MongoDB")
-rutas["Desarrollo Backend"] = RutaEntrenamiento("Desarrollo Backend", [modfundamentos, modweb, modformal, modbd, modbackend], "PostgreSQL", "MongoDB")
-
-for i,k in enumerate(rutas):
-  rutas[k].crearJson()
-  
-# RutaEntrenamiento.printRutaEntrenamiento(rutas["Desarrollo Backend"],[modfundamentos, modweb])

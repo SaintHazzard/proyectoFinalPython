@@ -3,7 +3,7 @@ import json
 class areasEntrenamiento:
   def __init__(self,nombre) -> object:
     self.nombre = nombre
-    self.ruta = ''
+    # self.ruta = ''
     self.capacidad = {"horarios" : {"morning":{"integrantes":{},"capacidad":0}, "afternoon": {"integrantes":{},"capacidad":0}}}
     
   def crearJson(self):
@@ -18,13 +18,9 @@ class areasEntrenamiento:
   def to_JSON(self):
        return{
             "nombre": self.nombre,
-            "ruta": self.ruta,
+            # "ruta": self.ruta,
             "capacidad": self.capacidad,
         }
 
-areas['Apolo'] = areasEntrenamiento('Apolo')
-areas['Artemis'] = areasEntrenamiento('Artemis')
-areas['Sputnik'] = areasEntrenamiento('Sputnik')
-for i in areas:
-  areas[i].crearJson()
+
 
