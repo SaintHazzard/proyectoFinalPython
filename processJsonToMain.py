@@ -39,6 +39,7 @@ def procesarJsonToCamper(CLASE,registroAspirantes,temporalDatosJson : dict):
     # print(type(temporalDatosJson[dictOb]), '  ', firstKey)
     # print(dictOb)
     registroAspirantes[dictOb]=reInstanciar(CLASE,temporalDatosJson[dictOb])
+ 
 
 
   
@@ -54,11 +55,12 @@ def crearJson(objeto,CARPETA):
 def reInstanciar(CLASE,diccionario):
   # print(CLASE.__dict__)
   # setattr(CLASE, 'documento', 1)
+  instancia = CLASE()
   for clave, valor in diccionario.items():
       # print(valor)
-      setattr(CLASE,clave, valor)
+      setattr(instancia,clave, valor)
       # input('Esperar')
-  return CLASE
+  return instancia
   
       
       # print(f'clave: {clave}, valor: {valor}')

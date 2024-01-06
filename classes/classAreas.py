@@ -1,16 +1,12 @@
 areas = {}
 import json
 class areasEntrenamiento:
-  def __init__(self,nombres) -> object:
-    self.nombres = nombres
-    # self.ruta = ''
-    self.capacidad = {"horarios" : {"Morning":{"integrantes":{},"capacidad":0}, "Afternoon": {"integrantes":{},"capacidad":0}}}
-  def __init__(self,nombres,capacidad=0) -> object:
+  def __init__(self,nombres=None,capacidad=0) -> object:
     self.nombres = nombres
     # self.ruta = ''
     self.capacidad = {"horarios" : {"Morning":{"integrantes":{},"capacidad":0}, "Afternoon": {"integrantes":{},"capacidad":0}}}
   def printInfoArea(self):
-    print("Nombre del area de entrenamiento:", self.nombre)
+    print("Nombre del area de entrenamiento:", self.nombres)
     print('Horarios')
     capacidad = self.capacidad['horarios']
     clavesHorarios= list(capacidad.keys())

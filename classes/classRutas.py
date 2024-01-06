@@ -4,7 +4,7 @@ rutas = {
   
 }
 class RutaEntrenamiento:
-  def __init__(self, nombres, modulos, sgdbPrincipal, sgdbAlternativo):
+  def __init__(self, nombres = None, modulos = None, sgdbPrincipal=None, sgdbAlternativo=None):
       self.nombres = nombres
       self.modulos = modulos
       self.sgdbPrincipal = sgdbPrincipal

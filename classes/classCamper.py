@@ -1,6 +1,6 @@
 from classes.persona import *
 class Camper(Persona):
-    def __init__(self, documento, nombres, apellidos, movil, fijo, direccion, acudiente,
+    def __init__(self, documento = 0, nombres ='', apellidos='', movil=0, fijo=0, direccion='', acudiente='',
                  notaTeorica=None, notaPractica=None, estado='Inscrito', ruta=None) -> Persona:
         """Instanciamiento de Camper"""
         super().__init__(documento, nombres, apellidos, movil, fijo, direccion)
@@ -53,22 +53,22 @@ class Camper(Persona):
     # crea un json con el objeto
     
     def to_JSON(self):
-       return{
-            "documento": self.documento,
-            "nombres": self.nombres,
-            "apellidos": self.apellidos,
-            "telefono": self.telefonos,
-            "direccion": self.direccion,
-            "acudiente": self.acudiente,
-            "estado": self.estado,
-            "ruta": self.ruta,
-            "notas": self.notas
-        }
+      return json.dumps({
+          "documento": self.documento,
+          "nombres": self.nombres,
+          "apellidos": self.apellidos,
+          "telefono": self.telefonos,
+          "direccion": self.direccion,
+          "acudiente": self.acudiente,
+          "estado": self.estado,
+          "ruta": self.ruta,
+          "notas": self.notas
+      }, indent=4)
        
        
     # clc es como decir Camper(relleno), es decir instancia la clase con el argumento @data que se le suministra
     @classmethod
-    def from_dict(self, data : dict) -> Persona:
+    def from_dict(cls, data : dict) -> Persona:
       """Este metodo convierte @data que se espera sea un archivo JSON-diccionario a un objeto 
          para ser almacenado en el diccionario del hilo main
 
@@ -78,8 +78,7 @@ class Camper(Persona):
       Returns:
           _Camper_: una instancia de la clase @Camper rellenada
       """
-      for clave, valor in data.items():
-            setattr(self, clave, valor)
+      return cls(**data)
       
       
     @classmethod
