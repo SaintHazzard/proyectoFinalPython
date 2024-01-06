@@ -1,16 +1,18 @@
 from classes.persona import *
 class Camper(Persona):
-    """Instanciamiento base
-
-    """
-    def __init__(self, documento, nombres, apellidos, movil,fijo, direccion, acudiente, estado='Inscrito', ruta =None) -> Persona:
+    
+    def __init__(self, documento, nombres, apellidos, movil,fijo, 
+        
+                 direccion, acudiente, estado='Inscrito', ruta =None) -> Persona:
+        """Instanciamiento base"""
         super().__init__(documento, nombres, apellidos, movil,fijo, direccion)
         self.acudiente = acudiente
         self.estado = estado
         self.ruta = ruta
         self.notas = {'nota teorica': 0, 'nota practica': 0}
     
-    def __init__(self, documento, nombres, apellidos, movil,fijo, direccion, acudiente,notaTeorica=0,notaPractica=0, estado='Inscrito', ruta =None) -> Persona: 
+    def __init__(self, documento, nombres, apellidos, movil,fijo, direccion, acudiente,
+                 notaTeorica=0,notaPractica=0, estado='Inscrito', ruta =None) -> Persona: 
       """Instanciamiento para convertir de json a objeto con notas
       """
       super().__init__(documento, nombres, apellidos, movil,fijo, direccion)
