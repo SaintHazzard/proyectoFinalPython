@@ -21,7 +21,8 @@ class Persona:
       with open(ruta_archivo, 'w+') as archivo_json:
           json.dump(self.to_JSON(), archivo_json,indent=4)
 
-      print(f"Datos guardados en {ruta_archivo}")
+      # print(f"Datos guardados en {ruta_archivo}")
+      print(f'Persona registrada satisfactoriamente')
 
 
 
