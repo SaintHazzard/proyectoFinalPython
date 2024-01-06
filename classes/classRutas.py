@@ -9,13 +9,14 @@ class RutaEntrenamiento:
       self.modulos = modulos
       self.sgdbPrincipal = sgdbPrincipal
       self.sgdbAlternativo = sgdbAlternativo
-  @classmethod
-  def printRutaEntrenamiento(cls,ruta,modulo):
-    print("Nombre de la ruta:", ruta.nombre)
-    for modulo in ruta.modulos:
-        print(f"- {modulo.nombre}: {', '.join(modulo.temas)}")
-    print("SGDB Principal:", ruta.sgdbPrincipal)
-    print("SGDB Alternativo:", ruta.sgdbAlternativo)
+  
+  def printRutaEntrenamiento(self):
+    print("Nombre de la ruta:", self.nombre)
+    print("Modulos")
+    for modulo in self.modulos:
+        print(f"\t : {', '.join(modulo)}")
+    print("SGDB Principal:", self.sgdbPrincipal)
+    print("SGDB Alternativo:", self.sgdbAlternativo)
   def showDataRuta(self):
     print(self.nombre)
     print(self.modulos)

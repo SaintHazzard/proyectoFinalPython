@@ -61,7 +61,7 @@ class Camper(Persona):
         with open(ruta_archivo,'w') as archivo_json:
           json.dump(sujeto,archivo_json,indent=4)
       if self.notas['nota practica'] and self.notas['nota teorica'] and promedio < 60:
-        print(f"El camper ha sido reprobado con nota promedio de:  {round(promedio,2)}")
+        print(f"El camper ha reprobado la admision con nota promedio de:  {round(promedio,2)}")
     # crea un json con el objeto
     
     def to_JSON(self):
