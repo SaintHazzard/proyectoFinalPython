@@ -1,6 +1,6 @@
 from classes.persona import *
 class Camper(Persona):
-    def __init__(self, documento, nombres, apellidos, movil,fijo, direccion, acudiente, estado, ruta) -> Persona: #Investigar si es necesario esto
+    def __init__(self, documento, nombres, apellidos, movil,fijo, direccion, acudiente, estado='Inscrito', ruta =None) -> Persona: #Investigar si es necesario esto
         super().__init__(documento, nombres, apellidos, movil,fijo, direccion)
         self.acudiente = acudiente
         self.estado = estado
@@ -51,3 +51,16 @@ class Camper(Persona):
             data['estado'],
             data['ruta']
         )
+      
+    @classmethod
+    def solicitar_datos_camper(registroAspirantes:dict):
+      documento = input("Ingrese el documento: ")
+      nombres = input("Ingrese los nombres: ")
+      apellidos = input("Ingrese los apellidos: ")
+      movil = input("Ingrese el número de móvil: ")
+      fijo = input("Ingrese el número fijo: ")
+      direccion = input("Ingrese la dirección: ")
+      acudiente = input("Ingrese el nombre del acudiente: ")
+      # estado = input("Ingrese el estado: ")
+      # ruta = input("Ingrese la ruta: ")
+      return documento, nombres, apellidos, movil, fijo, direccion, acudiente
