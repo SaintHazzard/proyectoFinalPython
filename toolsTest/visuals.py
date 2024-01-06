@@ -9,5 +9,8 @@ def clear():
     os.system('clear')
 def wait():
      input("Presiona Enter para continuar...")
+     
+if __name__ == "__main__":
+  pass
    
 

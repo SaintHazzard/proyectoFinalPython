@@ -3,7 +3,7 @@ registroAspirantes={}
 registroAspirantes['0']= Camper('1097910340', 'Oviel Felipe', 'Mendoza Pineda',3165880900,123123456, 'Cir 36a 104-128 Altos de la Pradera T3-1204', 'Martiza Pineda Celis')
 
 
-registroAspirantes['1'] = Camper('1098808399',
+registroAspirantes['1'] = Camper('1',
                                   'Alejandro',
                                   'Martinez Santos',
                                   3214321455,
