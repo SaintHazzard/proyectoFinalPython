@@ -2,6 +2,7 @@ from classes.persona import *
 from toolsTest.visuals import *
 from processJsonToMain import *
 from crearSujetos import  *
+from classes.classAreas import *
 
 
 registroAspirantes = {
@@ -15,12 +16,7 @@ while True:
   clear()
   print(menu)
   temporalDatosJson = from_JSOn()
-  # print(temporalDatosJson)
   procesarJsonToCamper(registroAspirantes,temporalDatosJson)
-  # print('*'*50)
-  # for documento in registroAspirantes:
-  #     print('-'*50)
-  #     registroAspirantes[documento].showData()
   elec = input('Eleccion: ')
   if elec == '1':
     documentoCamper,*demasDatos=Camper.solicitar_datos_camper()
