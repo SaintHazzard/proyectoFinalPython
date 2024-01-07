@@ -5,12 +5,12 @@ class areasEntrenamiento:
   def __init__(self,nombres=None,capacidad=0) -> object:
     self.nombres = nombres
     # self.ruta = ''
-    self.capacidad = {"horarios" : 
-                          {"6:00 a 10:00":{"integrantes":{},"capacidad":capacidad}, 
+    self.horarios = {"6:00 a 10:00":{"integrantes":{},"capacidad":capacidad}, 
                            "10:00 a 14:00": {"integrantes":{},"capacidad":capacidad},
                            "14:00 a 18:00": {"integrantes":{},"capacidad":capacidad},
                            "18:00 a 22:00": {"integrantes":{},"capacidad":capacidad}
-                           }}
+                           }
+    self.ruta = None
     
   
   
@@ -20,10 +20,10 @@ class areasEntrenamiento:
   def printInfoArea(self):
     print("Nombre del area de entrenamiento:", self.nombres)
     print('Horarios')
-    capacidad = self.capacidad['horarios']
-    clavesHorarios= list(capacidad.keys())
-    for i,hora in enumerate(capacidad):
-        print(f"\t{hora}: \n\t\tIntegrandes: {capacidad[hora]['capacidad']}")
+    horarios = self.horarios
+    clavesHorarios= list(horarios.keys())
+    for i,hora in enumerate(horarios):
+        print(f"\t{hora}: \n\t\tIntegrantes: {horarios[hora]['capacidad']}")
   
   def agregarIntegrante(self,integrante,carpeta):
     HORARIOS = {
@@ -38,25 +38,25 @@ class areasEntrenamiento:
       # with open(ruta_Archivo, 'r') as archivo_json:
       #   area = json.load(archivo_json)
       strHorario = HORARIOS[elec]
-      if self.validarNIntegtrantes(strHorario) and integrante.area is None:
+      if self.validarNIntegtrantes(strHorario):
         self.SetearValores(strHorario,integrante)
         with open(ruta_Archivo, "w") as archivo_json:
           json.dump(self.__dict__,archivo_json,indent=4)
   
   def validarNIntegtrantes(self,strHorario):
-    if self.capacidad["horarios"][strHorario]["capacidad"] < 33:
+    if self.horarios[strHorario]["capacidad"] < 33:
       return True
     else: False
     
   def SetearValores(self,strHorario,sujeto):
-    integrantes = self.capacidad["horarios"][strHorario]["integrantes"]
+    integrantes = self.horarios[strHorario]["integrantes"]
     
     if sujeto.documento not in integrantes:
       sujeto.area = self.nombres
       sujeto.horario = strHorario
       crearJson(sujeto,f"{CARPETAS[0]}{sujeto.documento}.json")
       integrantes[sujeto.documento] = sujeto.__dict__
-      self.capacidad["horarios"][strHorario]["capacidad"] += 1
+      self.horarios[strHorario]["capacidad"] += 1
     else:
       print('El camper ya esta asignado')
 

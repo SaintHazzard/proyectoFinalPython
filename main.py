@@ -49,9 +49,10 @@ if __name__=="__main__":
     if elec == '2':
       id= input('Indique el documento del camper: ')
       objetCamper = registroAspirantes[id]
-      elec = input('A que area desea agregar el camper?: ')
-      areas[OPCIONESAREAS[elec]].agregarIntegrante(objetCamper,CARPETAS[1])
-      print(areas[OPCIONESAREAS[elec]].capacidad)
+      if objetCamper.verifyAreaCamper() and objetCamper.getPromedio() >= 60:
+        elec = input('A que area desea agregar el camper?: ')
+        areas[OPCIONESAREAS[elec]].agregarIntegrante(objetCamper,CARPETAS[1])
+        print(areas[OPCIONESAREAS[elec]].horarios)
       input('Esperar test')
       pass
     if elec == '22':

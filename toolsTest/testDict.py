@@ -58,3 +58,10 @@ datos = {'a': 1, 'b': 2, 'c': 3}
 insta = Ejemplo.from_dict(datos)
 
 print(insta.to_JSON())
+
+def ejemplo_funcion(a, b, c):
+    print(f'a={a}, b={b}, c={c}')
+
+diccionario = {'a': 1, 'b': 2, 'c': 3}
+print(*diccionario)
+# ejemplo_funcion(**diccionario)

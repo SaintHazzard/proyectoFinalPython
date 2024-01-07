@@ -66,16 +66,8 @@ class Camper(Persona):
         with open(ruta_archivo,'w') as archivo_json:
           json.dump(sujeto,archivo_json,indent=4)
           
-          
-        if self.area is not None:
-          ruta_area = f'jsonDataAreas/{self.area}.json'
-          with open(ruta_area, 'r') as archivo_json:
-            area = json.load(archivo_json)
-            point = area['capacidad']['horarios'][f'{sujeto["horario"]}']["integrantes"]
-            if self.documento in point:
-              point[self.documento] = sujeto
-              with open(ruta_area, 'w') as archivo_json:
-                json.dump(area,archivo_json,indent=4)
+        self.setCamperInArea(sujeto)  
+
         if self.notas['nota practica'] and self.notas['nota teorica'] and promedio < 60:
           print(f"El camper ha reprobado la admision con nota promedio de:  {round(promedio,2)}")
       except ValueError as e:
@@ -94,3 +86,22 @@ class Camper(Persona):
     # estado = input("Ingrese el estado: ")
     # ruta = input("Ingrese la ruta: ")
     return documento, nombres, apellidos, movil, fijo, direccion, acudiente
+
+
+  def setCamperInArea(self,sujeto):
+    if self.area is not None:
+      ruta_area = f'jsonDataAreas/{self.area}.json'
+      with open(ruta_area, 'r') as archivo_json:
+        area = json.load(archivo_json)
+        point = area['capacidad']['horarios'][f'{sujeto["horario"]}']["integrantes"]
+        if self.documento in point:
+          point[self.documento] = sujeto
+          with open(ruta_area, 'w') as archivo_json:
+            json.dump(area,archivo_json,indent=4)
+
+
+  def verifyAreaCamper(self):
+    if self.area is None:
+      return True
+    print(f'El camper ya tiene el area {self.area} asignada')
+    False
