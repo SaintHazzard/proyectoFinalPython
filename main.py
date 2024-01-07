@@ -38,13 +38,11 @@ if __name__=="__main__":
     elec = input('Eleccion: ')
     if elec == '1':
       documentoCamper,*demasDatos=Camper.solicitar_datos_camper()
-      print(documentoCamper)
       registroAspirantes[documentoCamper] = Camper(documentoCamper,*demasDatos)
       crearJson(registroAspirantes[documentoCamper],f"{CARPETAS[0]}/{documentoCamper}.json")
       wait()
     if elec == '2':
       documento=input('Documento del camper a registrar nota: ')
-      print()
       if registroAspirantes[documento].getState() == 'Inscrito':
         registroAspirantes[documento].setNota()
       else: print(f"Solo puede registrar nota de campers son el estado de 'Inscrito' y el estado del camper con documento {documento} es {registroAspirantes[documento].getState()}")
@@ -58,7 +56,6 @@ if __name__=="__main__":
     if elec=='6':
       for ruta in rutasExistentes:
         print('-'*50)
-        print(ruta)
         rutasExistentes[ruta].printRutaEntrenamiento()
         
       wait()
