@@ -77,7 +77,8 @@ def crearJson(objeto : object,CARPETA:str) -> None:
 
 
 
-
+  """fucnion en desUSO, OBSOLETO remplazado por reInstanciar()
+  """
 def from_dict(cls, data : dict):
     """Este metodo convierte @data que se espera sea un archivo JSON-diccionario a un objeto 
         para ser almacenado en el diccionario del hilo main

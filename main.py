@@ -18,6 +18,11 @@ areas = {
   
 }
 
+OPCIONESAREAS = {
+  "1": "Apolo",
+  "2": "Artemis",
+  "3": "Sputnik",
+}
 
 
 menu = "1. Registrar Camper\n2. Registrar prueba\n3. Nueva ruta de entrenamiento\n5. Listar personas registradas\n6. Listar rutasExistentes\n7. Listar areas de entrenamiento\n0. Salir"
@@ -42,6 +47,14 @@ if __name__=="__main__":
       crearJson(registroAspirantes[documentoCamper],f"{CARPETAS[0]}{documentoCamper}.json")
       wait()
     if elec == '2':
+      id= input('Indique el documento del camper: ')
+      objetCamper = registroAspirantes[id]
+      elec = input('A que area desea agregar el camper?: ')
+      areas[OPCIONESAREAS[elec]].agregarIntegrante(objetCamper,CARPETAS[1])
+      print(areas[OPCIONESAREAS[elec]].capacidad)
+      input('Esperar test')
+      pass
+    if elec == '22':
       documento=input('Documento del camper a registrar nota: ')
       if registroAspirantes[documento].getState() == 'Inscrito':
         registroAspirantes[documento].setNota()

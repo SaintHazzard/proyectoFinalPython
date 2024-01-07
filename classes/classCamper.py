@@ -9,7 +9,9 @@ class Camper(Persona):
       self.acudiente = acudiente
       self.estado = estado
       self.ruta = ruta
-      self.notas = {'nota teorica': notaTeorica or 0, 'nota practica': notaPractica or 0}
+      self.area = None
+      self.horario = None
+      self.notas = {'nota teorica': notaTeorica or 0, 'nota practica': notaPractica or 0, 'nota trabajos': 0}
       
   def showData(self):
     """Muestra en un formato legible y ordenado la informacion del objeto, en este caso del Camper
@@ -63,6 +65,17 @@ class Camper(Persona):
           # crea un json con el objeto modificado
         with open(ruta_archivo,'w') as archivo_json:
           json.dump(sujeto,archivo_json,indent=4)
+          
+          
+        if self.area is not None:
+          ruta_area = f'jsonDataAreas/{self.area}.json'
+          with open(ruta_area, 'r') as archivo_json:
+            area = json.load(archivo_json)
+            point = area['capacidad']['horarios'][f'{sujeto["horario"]}']["integrantes"]
+            if self.documento in point:
+              point[self.documento] = sujeto
+              with open(ruta_area, 'w') as archivo_json:
+                json.dump(area,archivo_json,indent=4)
         if self.notas['nota practica'] and self.notas['nota teorica'] and promedio < 60:
           print(f"El camper ha reprobado la admision con nota promedio de:  {round(promedio,2)}")
       except ValueError as e:
