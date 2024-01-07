@@ -20,9 +20,7 @@ class Camper(Persona):
   def getPromedio(self):
     notaTeorica = self.notas['nota teorica']
     notaPractica = self.notas['nota practica'] 
-    # print(notaTeorica,notaPractica)
     promedio = (notaTeorica+notaPractica)/2
-    # print(promedio)
     return promedio
   
   def getState(self):
@@ -57,17 +55,14 @@ class Camper(Persona):
         else:
           input('Opcion no valida, intente de nuevo. Enter para continuar')
           continue
-
-        with open(ruta_archivo,'w') as archivo_json:
-          json.dump(sujeto,archivo_json,indent=4)
         promedio = self.getPromedio()
         if  promedio >= 60:
           print(f"El camper ha sido aprobado con nota promedio de:  {round(promedio,2)}")
           self.estado = 'Aprobado'
           sujeto['estado'] = self.estado
           # crea un json con el objeto modificado
-          with open(ruta_archivo,'w') as archivo_json:
-            json.dump(sujeto,archivo_json,indent=4)
+        with open(ruta_archivo,'w') as archivo_json:
+          json.dump(sujeto,archivo_json,indent=4)
         if self.notas['nota practica'] and self.notas['nota teorica'] and promedio < 60:
           print(f"El camper ha reprobado la admision con nota promedio de:  {round(promedio,2)}")
       except ValueError as e:

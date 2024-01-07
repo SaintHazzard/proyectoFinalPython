@@ -57,7 +57,7 @@ def crearJson(objeto : object,CARPETA:str) -> None:
   with open(CARPETA, 'w+') as archivo_json:
       json.dump(objeto.__dict__, archivo_json,indent=4)
   print(f"Datos guardados en {CARPETA}",end='')
-  print(f' {objeto.nombres} registrada satisfactoriamente')
+  print(f' {objeto.nombres} Registro exitoso')
 
 
 # def to_JSON(diccionario:dict):
