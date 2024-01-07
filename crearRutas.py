@@ -12,6 +12,6 @@ rutas["Programación Web"] = RutaEntrenamiento("Programación Web", [modfundamen
 rutas["Desarrollo Backend"] = RutaEntrenamiento("Desarrollo Backend", [modfundamentos, modweb, modformal, modbd, modbackend], "PostgreSQL", "MongoDB")
 
 for i in rutas:
-  crearJson(rutas[i],f"{CARPETAS[2]}/{i}.json")
+  crearJson(rutas[i],f"{CARPETAS[2]}{i}.json")
   
 # RutaEntrenamiento.printRutaEntrenamiento(rutas["Desarrollo Backend"],[modfundamentos, modweb])
