@@ -4,11 +4,11 @@ from classes.classCamper import *
 
 CARPETAS = ['jsonData/','jsonDataAreas/','jsonDataRutas/']
 
-def from_JSOn(carpeta):
-  """Lee todos los archivos JSON en la carpeta jsonData/ y los guarda en una variable temporal
-
+def from_JSOn(carpeta : str) -> dict:
+  """FUCNION -> READ Lee todos los archivos JSON en la carpeta que se le suministre como argumento y los guarda en una variable temporal
+  
   Returns:
-      __dict: devuelve un diccionario temporal que se utiliza para convertir cada elemento de este en un objeto
+      dict : devuelve un diccionario temporal que se utiliza para convertir cada elemento de este en un objeto
   """
   temporalJson = {}
   contenidoJsonData = os.listdir(carpeta)
@@ -24,18 +24,33 @@ def from_JSOn(carpeta):
 
 
  
-def procesarJsonToCamper(CLASE,registroAspirantes,temporalDatosJson : dict):
-
+def procesarJsonToCamper(CLASE,registroAspirantes,temporalDatosJson : dict) -> None:
+  
   for dictOb in temporalDatosJson:
     firstKey = next(iter(temporalDatosJson[dictOb]))
     # print(type(temporalDatosJson[dictOb]), '  ', firstKey)
     # print(dictOb)
     registroAspirantes[dictOb]=reInstanciar(CLASE,temporalDatosJson[dictOb])
- 
 
-
+"""Funcion que simula el antiguo From_DICT que reinstanciaba la clase
+"""
+def reInstanciar(CLASE,diccionario) -> object:
+  # print(CLASE.__dict__)
+  # setattr(CLASE, 'documento', 1)
+  instancia = CLASE()
+  for clave, valor in diccionario.items():
+      # print(valor)
+      setattr(instancia,clave, valor)
+      # input('Esperar')
+  return instancia
   
-def crearJson(objeto,CARPETA):
+def crearJson(objeto,CARPETA) -> None:
+  """FUNCION -> ESCRIBE crea los archivos self.JSON
+
+  Args:
+      objeto (objeto): Cualquier objeto
+      CARPETA (STR): direccion de la carpeta donde se guardaran los JSON
+  """
   # Ruta del archivo donde guardarás el JSON
   # ruta_archivo = f"{carpeta}/{next(iter(objeto))}.json"
   # Guardar los datos como JSON en un archivo
@@ -60,8 +75,6 @@ def crearJson(objeto,CARPETA):
       
 
 
-print()
-
 
 
 
@@ -81,17 +94,7 @@ def from_dict(cls, data : dict):
           data["sgdbPrincipal"],
           data['sgdbAlternativo']
       )
-"""Funcion que simula el antiguo From_DICT que reinstanciaba la clase
-"""
-def reInstanciar(CLASE,diccionario):
-  # print(CLASE.__dict__)
-  # setattr(CLASE, 'documento', 1)
-  instancia = CLASE()
-  for clave, valor in diccionario.items():
-      # print(valor)
-      setattr(instancia,clave, valor)
-      # input('Esperar')
-  return instancia
+
   
       
       # print(f'clave: {clave}, valor: {valor}')
