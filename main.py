@@ -1,9 +1,11 @@
 from classes.persona import * 
-from toolsTest.visuals import *
-from processJsonToMain import *
-from crearSujetos import  *
 from classes.classAreas import *
 from classes.classRutas import *
+
+from toolsTest.visuals import *
+from processJsonToMain import *
+# from crearSujetos import  *
+
 
 
 registroAspirantes = {

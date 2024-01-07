@@ -1,4 +1,6 @@
 from classes.persona import *
+from validarValores import *
+
 class Camper(Persona):
     def __init__(self, documento = 0, nombres ='', apellidos='', movil=0, fijo=0, direccion='', acudiente='',
                  notaTeorica=None, notaPractica=None, estado='Inscrito', ruta=None) -> Persona:
@@ -27,29 +29,49 @@ class Camper(Persona):
       return self.estado
     
     def setNota(self):
-      ruta_archivo = f"jsonData/{self.documento}.json"
-      with open(ruta_archivo, 'r') as archivo_json:
-        sujeto = json.load(archivo_json)
-      elec=input('Se puede registrar nota, que nota desea registrar\n\t1. Nota teorica\n\t2. Nota practica\n')
-      if elec == '1':
-        self.notas['nota teorica'] = int(input('Ingrese la nota teorica: '))
-        sujeto['notas']['nota teorica'] = self.notas['nota teorica']
-      if elec == '2':
-        self.notas['nota practica'] = int(input('Ingrese la nota practica: '))
-        sujeto['notas']['nota practica'] = self.notas['nota practica']
-      with open(ruta_archivo,'w') as archivo_json:
-        json.dump(sujeto,archivo_json,indent=4)
-      print('Nota registrada')
-      # print(self.nombres)
-      promedio = self.setState()
-      if  promedio >= 60:
-        print(f"El camper ha sido aprobado con nota promedio de:  {round(promedio,2)}")
-        self.estado = 'Aprobado'
-        sujeto['estado'] = self.estado
-        with open(ruta_archivo,'w') as archivo_json:
-          json.dump(sujeto,archivo_json,indent=4)
-      if self.notas['nota practica'] and self.notas['nota teorica'] and promedio < 60:
-        print(f"El camper ha reprobado la admision con nota promedio de:  {round(promedio,2)}")
+      while True:
+        try:
+          ruta_archivo = f"jsonData/{self.documento}.json"
+          with open(ruta_archivo, 'r') as archivo_json:
+            sujeto = json.load(archivo_json)
+          elec=input('Se puede registrar nota, que nota desea registrar\n\t1. Nota teorica\n\t2. Nota practica\n\t3. Volver al menu principal\n\t')
+          if elec not in ['1','2','3']:
+            continue
+          if elec == '1':
+            nota = int(input('Ingrese la nota teorica: '))
+            if value0To100(nota):
+              self.notas['nota teorica'] = nota
+            sujeto['notas']['nota teorica'] = self.notas['nota teorica']
+            
+            
+            
+            
+          if elec == '2':
+            nota = int(input('Ingrese la nota practica: '))
+            if value0To100(nota):
+              self.notas['nota practica'] = nota
+              sujeto['notas']['nota practica'] = self.notas['nota practica']
+              
+              
+              
+              
+          if elec == '3':
+            break
+          with open(ruta_archivo,'w') as archivo_json:
+            json.dump(sujeto,archivo_json,indent=4)
+          
+          # print(self.nombres)
+          promedio = self.setState()
+          if  promedio >= 60:
+            print(f"El camper ha sido aprobado con nota promedio de:  {round(promedio,2)}")
+            self.estado = 'Aprobado'
+            sujeto['estado'] = self.estado
+            with open(ruta_archivo,'w') as archivo_json:
+              json.dump(sujeto,archivo_json,indent=4)
+          if self.notas['nota practica'] and self.notas['nota teorica'] and promedio < 60:
+            print(f"El camper ha reprobado la admision con nota promedio de:  {round(promedio,2)}")
+        except ValueError as e:
+          print(f'El input suministrado es una letra, ingrese un numero')
     # crea un json con el objeto
     
     

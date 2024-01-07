@@ -25,25 +25,7 @@ class RutaEntrenamiento:
             "sgdbPrincipal": self.sgdbPrincipal,
             "sgdbAlternativo": self.sgdbAlternativo,
         }
-    
-    
-  @classmethod
-  def from_dict(cls, data : dict):
-      """Este metodo convierte @data que se espera sea un archivo JSON-diccionario a un objeto 
-         para ser almacenado en el diccionario del hilo main
 
-      Args:
-          data (_JSON_): Archivo JSON recibido como argumento para ser convertido en un objeto
-
-      Returns:
-          _Camper_: una instancia de la clase @Camper rellenada
-      """
-      return cls(
-            data['nombres'],
-            data['modulos'],
-            data["sgdbPrincipal"],
-            data['sgdbAlternativo']
-        )
 
 class Modulo:
     def __init__(self, nombres, temas):
