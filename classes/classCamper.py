@@ -73,13 +73,9 @@ class Camper(Persona):
         except ValueError as e:
           print(f'El input suministrado es una letra, ingrese un numero')
     # crea un json con el objeto
-    
-    
-       
-      
-      
-    @classmethod
-    def solicitar_datos_camper(cls):
+
+    @staticmethod
+    def solicitar_datos_camper():
       documento = input("Ingrese el documento: ")
       nombres = input("Ingrese los nombres: ")
       apellidos = input("Ingrese los apellidos: ")
