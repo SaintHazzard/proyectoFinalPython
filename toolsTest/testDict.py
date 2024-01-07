@@ -36,11 +36,17 @@ class Ejemplo:
   
   
   def to_JSON(self):
-        return json.dumps(self, default=lambda o: o.__dict__, indent=4)
+    """Esta funcion recibe un objeto y lo transforma en diccionario-JSON
+
+    Returns:
+        JSON: archivo.JSON
+    """
+    return json.dumps(self, default=lambda o: o.__dict__, indent=4)
       
 
+suma  = lambda x: x * 5
 
-
+print((lambda x: x * 5)(2))
 
 # Un diccionario con datos
 datos = {'a': 1, 'b': 2, 'c': 3}

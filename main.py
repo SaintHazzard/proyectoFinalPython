@@ -38,7 +38,7 @@ if __name__=="__main__":
       documentoCamper,*demasDatos=Camper.solicitar_datos_camper()
       print(documentoCamper)
       registroAspirantes[documentoCamper] = Camper(documentoCamper,*demasDatos)
-      crearJson(registroAspirantes[documentoCamper],f"{CARPETAS[1]}/{documentoCamper}.json")
+      crearJson(registroAspirantes[documentoCamper],f"{CARPETAS[0]}/{documentoCamper}.json")
       wait()
     if elec == '2':
       documento=input('Documento del camper a registrar nota: ')

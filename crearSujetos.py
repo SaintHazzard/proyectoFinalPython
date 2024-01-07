@@ -37,4 +37,4 @@ registroAspirantes['1'] = Camper('1',
 
 if __name__ == "__main__":
   for i in registroAspirantes:
-    crearJson(registroAspirantes[i],f"{CARPETAS[0]}/{i}.json")
+    crearJson(registroAspirantes[i],f"{CARPETAS[0]}{i}.json")
