@@ -25,7 +25,7 @@ OPCIONESAREAS = {
 }
 
 
-menu = "1. Registrar Camper\n2. Registrar prueba\n3. Nueva ruta de entrenamiento\n5. Listar personas registradas\n6. Listar rutasExistentes\n7. Listar areas de entrenamiento\n0. Salir"
+menu = "1. Registrar Camper\n2. Registrar prueba\n3. Nueva ruta de entrenamiento\n5. Listar personas registradas\n6. Listar rutasExistentes\n7. Listar areas de entrenamiento\n9. Crear ruta\n0. Salir"
 
 if __name__=="__main__":
   
@@ -80,6 +80,13 @@ if __name__=="__main__":
         areas[area].printInfoArea()
         input('Esperar')
       wait()
+      pass
+    if elec == '9':
+      nombreRuta = input('Indique nombre para la ruta de entrenamiento  ')
+      ruta=RutaEntrenamiento.crearRuta(nombreRuta)
+      rutasExistentes[ruta.nombres] = ruta
+      print(rutasExistentes[nombreRuta].printRutaEntrenamiento())
+      
       pass
     if elec == '0':
       ver= input('Esta seguro que desea terminar el programa? S/N ')
