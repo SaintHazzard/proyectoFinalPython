@@ -1,39 +1,46 @@
 import json
+# from processJsonToMain import crearJson
+
 from processJsonToMain import *
 
-
-# from processJsonToMain import *
-rutas = {
-  
-}
 class RutaEntrenamiento:
-    def __init__(self, nombres=None, modulos=None, sgdbPrincipal=None, sgdbAlternativo=None):
-        self.nombres = nombres
-        self.modulos = modulos or []
-        self.sgdbPrincipal = sgdbPrincipal
-        self.sgdbAlternativo = sgdbAlternativo
+  def __init__(self, nombres=None, modulos=None, sgdbPrincipal=None, sgdbAlternativo=None):
+      self.nombres = nombres
+      self.modulos = modulos or []
+      self.sgdbPrincipal = sgdbPrincipal
+      self.sgdbAlternativo = sgdbAlternativo
 
-    def printRutaEntrenamiento(self):
-        print("Nombre de la ruta:", self.nombres)
-        print("Modulos")
-        for modulo in self.modulos:
-            print(f"\t : {', '.join(modulo)}")
-        print("SGDB Principal:", self.sgdbPrincipal)
-        print("SGDB Alternativo:", self.sgdbAlternativo)
+  def printRutaEntrenamiento(self):
+      print("Nombre de la ruta:", self.nombres)
+      print("Modulos")
+      for modulo in self.modulos:
+          print(f"\t : {', '.join(modulo)}")
+      print("SGDB Principal:", self.sgdbPrincipal)
+      print("SGDB Alternativo:", self.sgdbAlternativo)
 
-    @classmethod
-    def crearRuta(cls, nombreRuta):
-        ruta = cls(nombreRuta)
-        crearJson(ruta, f"jsonDataRutas/{ruta.nombres}.json")
-        MODULOS = {
-            "fundamentos": Modulo("Fundamentos de programación", ["Introducción a la algoritmia", "PSeInt", "Python"]).getModulo(),
-            "web": Modulo("Programación Web", ["HTML", "CSS", "Bootstrap"]).getModulo(),
-            "formal": Modulo("Programación formal", ["Java", "JavaScript", "C#"]).getModulo(),
-            "backend": Modulo("Backend", ["NetCore", "Spring Boot", "NodeJS", "Express"]).getModulo(),
-        }
-        ruta.modulos.extend(agregarModulos(MODULOS))
-        seleccionarDbs(ruta)
-        return ruta
+  @classmethod
+  def crearRuta(cls, nombreRuta):
+      ruta = cls(nombreRuta)
+      crearJson(ruta, f"jsonDataRutas/{ruta.nombres}.json")
+      MODULOS = {
+          "fundamentos": Modulo("Fundamentos de programación", ["Introducción a la algoritmia", "PSeInt", "Python"]).getModulo(),
+          "web": Modulo("Programación Web", ["HTML", "CSS", "Bootstrap"]).getModulo(),
+          "formal": Modulo("Programación formal", ["Java", "JavaScript", "C#"]).getModulo(),
+          "backend": Modulo("Backend", ["NetCore", "Spring Boot", "NodeJS", "Express"]).getModulo(),
+      }
+      ruta.modulos.extend(agregarModulos(MODULOS))
+      seleccionarDbs(ruta)
+      return ruta
+    
+  @classmethod
+  def seleccionarRuta(cls,rutasExistentes):
+    for i in rutasExistentes:
+      print(i)
+      print('entra')
+    pass
+  
+
+
 
 def imprimirModulos(MODULOS):
     print("\n".join([f'{key+1}. Modulo {value.capitalize()}: {", ".join(MODULOS[value])}' for key, value in enumerate(MODULOS)]) + "\n5. Seleccionar base de datos y guardar ruta\n")
@@ -104,12 +111,12 @@ def seleccionarDbs(ruta):
             break
         else:
             print('Selección inválida. Intente de nuevo.')
-
     crearJson(ruta, f"jsonDataRutas/{ruta.nombres}.json")
           
 
+# RutaEntrenamiento.seleccionarRuta()
 class Modulo:
-    def __init__(self, nombres, temas):
+    def __init__(self, nombres, temas): 
         self.nombres = nombres
         self.temas = temas
     

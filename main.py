@@ -25,7 +25,7 @@ OPCIONESAREAS = {
 }
 
 
-menu = "1. Registrar Camper\n2. Registrar prueba\n3. Nueva ruta de entrenamiento\n5. Listar personas registradas\n6. Listar rutasExistentes\n7. Listar areas de entrenamiento\n9. Crear ruta\n0. Salir"
+menu = "1. Registrar Camper\n2. Registrar prueba\n3. Nueva ruta de entrenamiento\n5. Listar personas registradas\n6. Listar rutasExistentes\n7. Listar areas de entrenamiento\n9. Crear ruta\n10. Agregar ruta a un area\n0. Salir"
 
 if __name__=="__main__":
   
@@ -47,12 +47,19 @@ if __name__=="__main__":
       crearJson(registroAspirantes[documentoCamper],f"{CARPETAS[0]}{documentoCamper}.json")
       wait()
     if elec == '2':
+      print("***Asignar area al camper***")
       id= input('Indique el documento del camper: ')
       objetCamper = registroAspirantes[id]
       if objetCamper.verifyAreaCamper() and objetCamper.getPromedio() >= 60:
+        print("\n".join([f'{key}. {value}' for key,value in OPCIONESAREAS.items()]) + "\n")
         elec = input('A que area desea agregar el camper?: ')
+        
         areas[OPCIONESAREAS[elec]].agregarIntegrante(objetCamper,CARPETAS[1])
-        print(areas[OPCIONESAREAS[elec]].horarios)
+        # print(areas[OPCIONESAREAS[elec]].horarios)
+      elif not objetCamper.verifyBothCal():
+        print('El Camper no tiene todas las notas registradas, no se le puede asignar area')
+      elif objetCamper.getPromedio() < 60:
+        print(f"El camper ha reprobado la admision con nota promedio de:  {round(objetCamper.getPromedio(),2)} no se le puede asignar area")
       input('Esperar test')
       pass
     if elec == '22':
@@ -86,8 +93,12 @@ if __name__=="__main__":
       ruta=RutaEntrenamiento.crearRuta(nombreRuta)
       rutasExistentes[ruta.nombres] = ruta
       print(rutasExistentes[nombreRuta].printRutaEntrenamiento())
-      
-      pass
+    if elec == '10':
+      AreasJson = list(from_JSOn(CARPETAS[1]).keys())
+      print("Que area desea modificar? :")
+      NumArea = input(("\n".join([f'{i+1}. {areas[area].nombres}' for i,area in enumerate(areas)])) + "\nEleccion: ")
+      areaSeleccionada = areas[AreasJson[int(NumArea)-1]]
+      areaSeleccionada.setRuta(rutasExistentes)
     if elec == '0':
       ver= input('Esta seguro que desea terminar el programa? S/N ')
       if ver == 's' or ver == 'S':

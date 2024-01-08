@@ -32,8 +32,7 @@ class Camper(Persona):
   def setValoresNota(self,strNota,nota,sujeto):
     self.notas[strNota.lower()] = nota
     sujeto['notas'][strNota] = self.notas[strNota.lower()]
-    
-    
+
   def setNota(self):
     OPCIONES = {
       "1" : "Nota teorica",
@@ -63,13 +62,14 @@ class Camper(Persona):
           self.estado = 'Aprobado'
           sujeto['estado'] = self.estado
           # crea un json con el objeto modificado
+        if self.notas['nota practica'] and self.notas['nota teorica'] and promedio < 60:
+          print(f"El camper ha reprobado la admision con nota promedio de:  {round(promedio,2)}")
         with open(ruta_archivo,'w') as archivo_json:
           json.dump(sujeto,archivo_json,indent=4)
           
         self.setCamperInArea(sujeto)  
 
-        if self.notas['nota practica'] and self.notas['nota teorica'] and promedio < 60:
-          print(f"El camper ha reprobado la admision con nota promedio de:  {round(promedio,2)}")
+
       except ValueError as e:
         print(f'El input suministrado es una letra, ingrese un numero')
   
@@ -105,3 +105,12 @@ class Camper(Persona):
       return True
     print(f'El camper ya tiene el area {self.area} asignada')
     False
+    
+  def verifyBothCal(self):
+    if self.notas['nota teorica'] and self.notas['nota practica']:
+      return True
+    if not self.notas['nota teorica']:
+      print("La nota teorica aun no ha sido registrada")
+    if not self.notas['nota practica']:
+      print("La nota practica aun no ha sido registrada")
+    return False

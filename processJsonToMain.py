@@ -1,6 +1,7 @@
 import os
 import json
 from classes.classCamper import *
+from classes.classRutas import *
 
 CARPETAS = ['jsonData/','jsonDataAreas/','jsonDataRutas/']
 
@@ -24,13 +25,13 @@ def from_JSOn(carpeta : str) -> dict:
 
 
  
-def procesarJsonToCamper(CLASE,registroAspirantes,temporalDatosJson : dict) -> None:
+def procesarJsonToCamper(CLASE,dictInMain,temporalDatosJson : dict) -> None:
   
   for dictOb in temporalDatosJson:
     firstKey = next(iter(temporalDatosJson[dictOb]))
     # print(type(temporalDatosJson[dictOb]), '  ', firstKey)
-    # print(dictOb)
-    registroAspirantes[dictOb]=reInstanciar(CLASE,temporalDatosJson[dictOb])
+    dictInMain[dictOb]=reInstanciar(CLASE,temporalDatosJson[dictOb])
+
 
 """Funcion que simula el antiguo From_DICT que reinstanciaba la clase
 """
@@ -39,9 +40,9 @@ def reInstanciar(CLASE : classmethod,diccionario:dict) -> object:
   # setattr(CLASE, 'documento', 1)
   instancia = CLASE()
   for clave, valor in diccionario.items():
-      # print(valor)
+      
       setattr(instancia,clave, valor)
-      # input('Esperar')
+
   return instancia
   
 def crearJson(objeto : object,CARPETA:str) -> None:
