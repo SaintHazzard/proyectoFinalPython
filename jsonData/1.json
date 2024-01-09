@@ -1,0 +1,21 @@
+{
+    "documento": "1",
+    "nombres": "Alejandro",
+    "apellidos": "Martinez Santos",
+    "telefonos": {
+        "movil": 3214321455,
+        "fijo": 8883599
+    },
+    "direccion": "Monviso",
+    "acudiente": "Mi madresita",
+    "estado": "Aprobado",
+    "ruta": "Ruta NodeJS",
+    "area": "Sputnik",
+    "horario": "6:00 a 10:00",
+    "notas": {
+        "nota teorica": 0,
+        "nota practica": 0,
+        "nota trabajo": 0,
+        "nota quices": 0
+    }
+}

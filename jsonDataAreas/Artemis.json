@@ -1,0 +1,25 @@
+{
+    "nombres": "Artemis",
+    "horarios": {
+        "6:00 a 10:00": {
+            "integrantes": {},
+            "capacidad": 0,
+            "ruta": "Ruta NetCore"
+        },
+        "10:00 a 14:00": {
+            "integrantes": {},
+            "capacidad": 0,
+            "ruta": "Ruta NetCore"
+        },
+        "14:00 a 18:00": {
+            "integrantes": {},
+            "capacidad": 0,
+            "ruta": "Ruta NetCore"
+        },
+        "18:00 a 22:00": {
+            "integrantes": {},
+            "capacidad": 0,
+            "ruta": "Ruta NetCore"
+        }
+    }
+}

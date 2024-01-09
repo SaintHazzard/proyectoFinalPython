@@ -1,0 +1,19 @@
+{
+    "documento": "2",
+    "nombres": "Oviel 2",
+    "apellidos": "Mendoza Pineda",
+    "telefonos": {
+        "movil": 3165880000,
+        "fijo": 123123456
+    },
+    "direccion": "Direccion: El weon se doxea solo",
+    "acudiente": "Martiza Pineda Celis",
+    "estado": "Inscrito",
+    "ruta": null,
+    "area": null,
+    "horario": null,
+    "notas": {
+        "nota teorica": 0,
+        "nota practica": 0
+    }
+}

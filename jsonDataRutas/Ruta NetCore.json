@@ -1,0 +1,18 @@
+{
+    "nombres": "Ruta NetCore",
+    "modulos": {
+        "formal": [
+            "Java",
+            "JavaScript",
+            "C#"
+        ],
+        "backend": [
+            "NetCore",
+            "Spring Boot",
+            "NodeJS",
+            "Express"
+        ]
+    },
+    "sgdbPrincipal": "MySQL",
+    "sgdbAlternativo": "MongoDB"
+}

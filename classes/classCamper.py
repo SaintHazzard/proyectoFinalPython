@@ -18,12 +18,18 @@ class Camper(Persona):
     """
     super().showData()
     print(f'Estado: {self.estado}\nRuta: {self.ruta}\nNotas: {self.notas}')
+    
+  def showDataAprobado(self):
+    if self.estado == 'Aprobado':
+      print(f'El camper {self.nombres} esta {self.estado}')
+    pass
 
   def getPromedio(self):
     notaTeorica = self.notas['nota teorica']
     notaPractica = self.notas['nota practica'] 
     promedio = (notaTeorica+notaPractica)/2
     return promedio
+  
   
   
   def getState(self):

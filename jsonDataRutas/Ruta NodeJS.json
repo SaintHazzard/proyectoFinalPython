@@ -1,0 +1,28 @@
+{
+    "nombres": "Ruta NodeJS",
+    "modulos": {
+        "fundamentos": [
+            "Introducci\u00f3n a la algoritmia",
+            "PSeInt",
+            "Python"
+        ],
+        "web": [
+            "HTML",
+            "CSS",
+            "Bootstrap"
+        ],
+        "formal": [
+            "Java",
+            "JavaScript",
+            "C#"
+        ],
+        "backend": [
+            "NetCore",
+            "Spring Boot",
+            "NodeJS",
+            "Express"
+        ]
+    },
+    "sgdbPrincipal": "MySQL",
+    "sgdbAlternativo": "MongoDB"
+}

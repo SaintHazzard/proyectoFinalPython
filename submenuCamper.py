@@ -4,8 +4,9 @@ from classes.classRutas import *
 def submenucamper(data):
   OPCIONES = {
     "1" : "Ingreso de notas",
-    '2' : "Listar Campers",
+    '2' : "Listar todos",
     "3" : "Listar Campers con bajo rendimiento",
+    "4" : "Listar Campers aprobados",
     "0" : "Menu anterior"
   }
   while True:
@@ -24,6 +25,12 @@ def submenucamper(data):
         for documento in data:
           print('-'*50)
           data[documento].showData()
+        wait()
+        pass
+      elif elec is "4":
+        print(f'Los campers aprobados fueron: ')
+        for documento in data:
+          data[documento].showDataAprobado()
         wait()
         pass
       elif elec is "0":
