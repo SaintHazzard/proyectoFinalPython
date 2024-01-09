@@ -52,13 +52,20 @@ class areasEntrenamiento:
     if sujeto.documento not in integrantes:
       sujeto.area = self.nombres
       sujeto.horario = strHorario
+      sujeto.notas['nota trabajo'] = 0
+      sujeto.notas['nota quices'] = 0
+      sujeto.ruta = self.horarios[strHorario]['ruta']
+      sujeto.notas = {key: 0 for key in sujeto.notas}
+      reInstanciar(Camper,sujeto.__dict__)
       crearJson(sujeto,f"{CARPETAS[0]}{sujeto.documento}.json")
-      integrantes[sujeto.documento] = sujeto.__dict__
+      individuo = sujeto.__dict__
+      integrantes[sujeto.documento] = f"{individuo['nombres']} {individuo['apellidos']}"
+      # integrantes[sujeto.nombres][integrantes[sujeto.documento]] = individuo['nombres']
       self.horarios[strHorario]["capacidad"] += 1
     else:
       print('El camper ya esta asignado')
   
-  def setRuta(self,rutasExistentes):
+  def setRuta(self,rutasExistentes,integrantes):
     HORARIOS = {
     '1': "6:00 a 10:00",
     '2': "10:00 a 14:00",
@@ -73,11 +80,12 @@ class areasEntrenamiento:
     # with open()
     rutaSeleccionada = rutasExistentes[rutasJson[int(numRuta)-1]]
     self.horarios[strHorario]["ruta"] = rutaSeleccionada.__dict__["nombres"]
+    
     dictIntegrantesArea = self.horarios[strHorario]["integrantes"]
-    for i,integrante in dictIntegrantesArea.items():
-      dictIntegrantesArea[i]["ruta"] = rutaSeleccionada.nombres
-      print(dictIntegrantesArea[i])
-      crearJson(reInstanciar(Camper,dictIntegrantesArea[i]),(f'jsonData/{dictIntegrantesArea[i]["documento"]}.json'))
+    for key,value in integrantes.items():
+      doc = value.__dict__["documento"]
+      if doc in dictIntegrantesArea:
+        crearJson(reInstanciar(Camper,value.__dict__),(f'jsonData/{value.__dict__["documento"]}.json'))
     input('Esperar')
     crearJson(self,(f'{CARPETAS[1]}{self.nombres}.json'))
     input(f'Ruta {rutasJson[int(numRuta)-1]} agregada al area {self.nombres} en el horario {strHorario}')

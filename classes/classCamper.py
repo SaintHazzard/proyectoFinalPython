@@ -11,7 +11,7 @@ class Camper(Persona):
       self.ruta = ruta
       self.area = None
       self.horario = None
-      self.notas = {'nota teorica': notaTeorica or 0, 'nota practica': notaPractica or 0, 'nota trabajos': 0}
+      self.notas = {'nota teorica': notaTeorica or 0, 'nota practica': notaPractica or 0}
       
   def showData(self):
     """Muestra en un formato legible y ordenado la informacion del objeto, en este caso del Camper
@@ -34,19 +34,15 @@ class Camper(Persona):
     sujeto['notas'][strNota] = self.notas[strNota.lower()]
 
   def setNota(self):
-    OPCIONES = {
-      "1" : "Nota teorica",
-      "2" : "Nota practica",
-      "3" : "Volver al menu principal"
-    }
+    OPCIONES = {str(i+1): key.capitalize() for i,key in enumerate(self.notas)}
     while True:
       try:
         ruta_archivo = f"jsonData/{self.documento}.json"
         with open(ruta_archivo, 'r') as archivo_json:
           sujeto = json.load(archivo_json)
-        elec=input("\n".join([f'{key}. {value}' for key,value in OPCIONES.items()]) + "\n")
+        elec=input("\n".join([f'{key}. {value}' for key,value in OPCIONES.items()]) + "\n" + "0. Menu principal\n")
         if elec in OPCIONES:
-          if elec == '3':
+          if elec == '0':
             print('Volviendo al menu principal...')
             break
           strElecNota = OPCIONES[elec].lower()

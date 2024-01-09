@@ -1,7 +1,7 @@
 import json
 # from processJsonToMain import crearJson
 
-from processJsonToMain import *
+from classes.processJsonToMain import *
 
 class RutaEntrenamiento:
   def __init__(self, nombres=None, modulos=None, sgdbPrincipal=None, sgdbAlternativo=None):
@@ -28,7 +28,7 @@ class RutaEntrenamiento:
           "formal": Modulo("Programación formal", ["Java", "JavaScript", "C#"]).getModulo(),
           "backend": Modulo("Backend", ["NetCore", "Spring Boot", "NodeJS", "Express"]).getModulo(),
       }
-      ruta.modulos.extend(agregarModulos(MODULOS))
+      ruta.modulos = agregarModulos(MODULOS)
       seleccionarDbs(ruta)
       return ruta
     
@@ -67,7 +67,7 @@ def seleccionUsuario(lenElegir):
             print("Opción inválida. Por favor, ingrese un número válido.")
 
 def agregarModulos(MODULOS):
-    ruta_modulos = []
+    ruta_modulos = {}
     MODULOSNAME = list(MODULOS.keys())
 
     while True:
@@ -75,8 +75,12 @@ def agregarModulos(MODULOS):
         moduloSeleccionado = MODULOSNAME[nRuta-1] if nRuta <= len(MODULOSNAME) else None
 
         if moduloSeleccionado in MODULOS:
-            if MODULOS[moduloSeleccionado] not in ruta_modulos:
-                ruta_modulos.append(MODULOS[moduloSeleccionado])
+            if moduloSeleccionado not in ruta_modulos:
+                print(MODULOS[moduloSeleccionado])
+                
+                ruta_modulos[moduloSeleccionado]=MODULOS[moduloSeleccionado]
+                print(ruta_modulos)
+                input()
                 MODULOS.pop(moduloSeleccionado)
                 MODULOSNAME.remove(moduloSeleccionado)
                 print(f'\t\tModulo {moduloSeleccionado.capitalize()} agregado')

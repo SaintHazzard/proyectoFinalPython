@@ -8,10 +8,10 @@ modbackend = Modulo("Backend", ["NetCore", "Spring Boot", "NodeJS", "Express"]).
 # modbd = Modulo("Bases de datos", ["MySQL", "MongoDB", "PostgreSQL"]).getModulo()
 
 
-rutas["Ruta NodeJS"] = RutaEntrenamiento("Ruta NodeJS", [modfundamentos, modweb, modformal,modbackend], "MySQL", "MongoDB")
-rutas["Ruta Java"] = RutaEntrenamiento("Ruta Java", [modfundamentos, modformal, modbackend], "PostgreSQL", "MongoDB")
-rutas["Ruta NetCore"] = RutaEntrenamiento("Ruta NetCore", [modformal, modbackend], "MySQL", "MongoDB")
-rutas["Desarrollo Backend"] = RutaEntrenamiento("Desarrollo Backend", [modfundamentos, modformal, modbackend], "PostgreSQL", "MySQL")
+rutas["Ruta NodeJS"] = RutaEntrenamiento("Ruta NodeJS", {"fundamentos": modfundamentos, "web": modweb, "formal" : modformal, "backend": modbackend}, "MySQL", "MongoDB")
+rutas["Ruta Java"] = RutaEntrenamiento("Ruta Java", {"fundamentos": modfundamentos, "formal" : modformal, "backend": modbackend}, "PostgreSQL", "MongoDB")
+rutas["Ruta NetCore"] = RutaEntrenamiento("Ruta NetCore", {"formal" : modformal, "backend": modbackend}, "MySQL", "MongoDB")
+rutas["Desarrollo Backend"] = RutaEntrenamiento("Desarrollo Backend", {"fundamentos": modfundamentos, "formal" : modformal, "backend": modbackend}, "PostgreSQL", "MySQL")
 
 for i in rutas:
   crearJson(rutas[i],f"{CARPETAS[2]}{i}.json")

@@ -53,7 +53,6 @@ if __name__=="__main__":
       if objetCamper.verifyAreaCamper() and objetCamper.getPromedio() >= 60:
         print("\n".join([f'{key}. {value}' for key,value in OPCIONESAREAS.items()]) + "\n")
         elec = input('A que area desea agregar el camper?: ')
-        
         areas[OPCIONESAREAS[elec]].agregarIntegrante(objetCamper,CARPETAS[1])
         # print(areas[OPCIONESAREAS[elec]].horarios)
       elif not objetCamper.verifyBothCal():
@@ -83,7 +82,7 @@ if __name__=="__main__":
       pass
     if elec=='7':
       for area in areas:
-        print('-'*50)
+        print('-'*50) 
         areas[area].printInfoArea()
         input('Esperar')
       wait()
@@ -98,7 +97,7 @@ if __name__=="__main__":
       print("Que area desea modificar? :")
       NumArea = input(("\n".join([f'{i+1}. {areas[area].nombres}' for i,area in enumerate(areas)])) + "\nEleccion: ")
       areaSeleccionada = areas[AreasJson[int(NumArea)-1]]
-      areaSeleccionada.setRuta(rutasExistentes)
+      areaSeleccionada.setRuta(rutasExistentes,registroAspirantes)
     if elec == '0':
       ver= input('Esta seguro que desea terminar el programa? S/N ')
       if ver == 's' or ver == 'S':
