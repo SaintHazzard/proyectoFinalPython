@@ -86,9 +86,8 @@ class areasEntrenamiento:
       doc = value.__dict__["documento"]
       if doc in dictIntegrantesArea:
         crearJson(reInstanciar(Camper,value.__dict__),(f'jsonData/{value.__dict__["documento"]}.json'))
-    input('Esperar')
     crearJson(self,(f'{CARPETAS[1]}{self.nombres}.json'))
-    input(f'Ruta {rutasJson[int(numRuta)-1]} agregada al area {self.nombres} en el horario {strHorario}')
+    print(f'Ruta {rutasJson[int(numRuta)-1]} agregada al area {self.nombres} en el horario {strHorario}')
 
       
       
