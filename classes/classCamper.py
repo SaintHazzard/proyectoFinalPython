@@ -31,6 +31,7 @@ class Camper(Persona):
   
   def setValoresNota(self,strNota,nota,sujeto):
     self.notas[strNota.lower()] = nota
+    print(strNota)
     sujeto['notas'][strNota] = self.notas[strNota.lower()]
 
   def setNota(self):
@@ -53,17 +54,17 @@ class Camper(Persona):
           input('Opcion no valida, intente de nuevo. Enter para continuar')
           continue
         promedio = self.getPromedio()
-        if  promedio >= 60:
+        if  promedio >= 60 and len(self.notas) == 2:
           print(f"El camper ha sido aprobado con nota promedio de:  {round(promedio,2)}")
           self.estado = 'Aprobado'
           sujeto['estado'] = self.estado
           # crea un json con el objeto modificado
-        if self.notas['nota practica'] and self.notas['nota teorica'] and promedio < 60:
+        if self.notas['nota practica'] and self.notas['nota teorica'] and promedio < 60 and len(self.notas) == 2:
           print(f"El camper ha reprobado la admision con nota promedio de:  {round(promedio,2)}")
-        with open(ruta_archivo,'w') as archivo_json:
+        with open(ruta_archivo,'w+') as archivo_json:
           json.dump(sujeto,archivo_json,indent=4)
           
-        self.setCamperInArea(sujeto)  
+        # self.setCamperInArea(sujeto)  
 
 
       except ValueError as e:
@@ -89,7 +90,7 @@ class Camper(Persona):
       ruta_area = f'jsonDataAreas/{self.area}.json'
       with open(ruta_area, 'r') as archivo_json:
         area = json.load(archivo_json)
-        point = area['capacidad']['horarios'][f'{sujeto["horario"]}']["integrantes"]
+        point = area['horarios'][f'{sujeto["horario"]}']["integrantes"]
         if self.documento in point:
           point[self.documento] = sujeto
           with open(ruta_area, 'w') as archivo_json:
@@ -103,11 +104,11 @@ class Camper(Persona):
     False
     
   def verifyBothCal(self):
-    if self.notas['nota teorica'] and self.notas['nota practica']:
+    if self.notas['nota teorica'] and self.notas['nota practica'] and len(self.notas) == 2:
       return True
     if not self.notas['nota teorica'] and len(self.notas) == 2:
       print("La nota teorica aun no ha sido registrada")
     if not self.notas['nota practica'] and len(self.notas) == 2:
       print("La nota practica aun no ha sido registrada")
-    print('El Camper no tiene todas las notas registradas, no se le puede asignar area')
+    # print('El Camper no tiene todas las notas registradas, no se le puede asignar area')
     return False

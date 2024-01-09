@@ -40,7 +40,7 @@ if __name__=="__main__":
     if elec == '1':
       submenuregistro(DATA)
     if elec == '2':
-      submenucamper(DATA,AREAS,RUTAS)
+      submenucamper(DATA)
       pass
     elif elec == "3":
       submenuareasyrutas(DATA,AREAS,RUTAS,CARPETAS)

@@ -5,7 +5,7 @@ def submenuareasyrutas(data,areas,rutasExistentes,CARPETAS):
         "1" : "Asignar area al camper",
     "2" : "Crear rutas",
     "3" : "Asignar ruta a area de entrenamiento",
-    "4" : "Rutas existentes",
+    "4" : "Listar Rutas existentes",
     "5" : "Listar Areas de entrenamiento",
     "0" : "Menu principal"
   }
@@ -29,7 +29,7 @@ def submenuareasyrutas(data,areas,rutasExistentes,CARPETAS):
         objetCamper.verifyBothCal()
       elif objetCamper.getPromedio() < 60 and len(objetCamper.notas) == 2:
         print(f"El camper ha reprobado la admision con nota promedio de:  {round(objetCamper.getPromedio(),2)} no se le puede asignar area")
-    if elec is "2":
+    elif elec is "2":
         nombreRuta = input('Indique nombre para la ruta de entrenamiento  ')
         ruta=RutaEntrenamiento.crearRuta(nombreRuta)
         rutasExistentes[ruta.nombres] = ruta
@@ -53,4 +53,6 @@ def submenuareasyrutas(data,areas,rutasExistentes,CARPETAS):
     
     elif elec is "0":
       break
+    else : 
+      print("Eleccion no valida, Ingrese una opcion valida")
     wait()

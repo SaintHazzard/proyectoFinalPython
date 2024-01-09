@@ -4,13 +4,13 @@ import os
 from processJsonToMain import *
 # from classRutas import *
 class areasEntrenamiento:
-  def __init__(self,nombres=None,capacidad=0) -> object:
+  def __init__(self,nombres=None,capacidad=0,ruta=None) -> object:
     self.nombres = nombres
     # self.ruta = ''
-    self.horarios = {"6:00 a 10:00":{"integrantes":{},"capacidad":capacidad, "ruta" : None}, 
-                           "10:00 a 14:00": {"integrantes":{},"capacidad":capacidad, "ruta" : None},
-                           "14:00 a 18:00": {"integrantes":{},"capacidad":capacidad, "ruta" : None},
-                           "18:00 a 22:00": {"integrantes":{},"capacidad":capacidad, "ruta" : None}
+    self.horarios = {"6:00 a 10:00":{"integrantes":{},"capacidad":capacidad, "ruta" : ruta}, 
+                           "10:00 a 14:00": {"integrantes":{},"capacidad":capacidad, "ruta" : ruta},
+                           "14:00 a 18:00": {"integrantes":{},"capacidad":capacidad, "ruta" : ruta},
+                           "18:00 a 22:00": {"integrantes":{},"capacidad":capacidad, "ruta" : ruta}
                            }
     
   
@@ -30,7 +30,7 @@ class areasEntrenamiento:
     '3': "14:00 a 18:00",
     '4': "18:00 a 22:00"}
     print('Indique el horario: ')
-    elec = input("\n".join([f"{key}. {value}" for key,value in HORARIOS.items()]) + "\n")
+    elec = input("\n".join([f"{key}. {value}" for key,value in HORARIOS.items()]) + "\nEleccion: ")
     if elec in HORARIOS:
       ruta_Archivo = f'{carpeta}{self.nombres}.json'
       # with open(ruta_Archivo, 'r') as archivo_json:
@@ -85,6 +85,7 @@ class areasEntrenamiento:
     for key,value in integrantes.items():
       doc = value.__dict__["documento"]
       if doc in dictIntegrantesArea:
+        
         crearJson(reInstanciar(Camper,value.__dict__),(f'jsonData/{value.__dict__["documento"]}.json'))
     crearJson(self,(f'{CARPETAS[1]}{self.nombres}.json'))
     print(f'Ruta {rutasJson[int(numRuta)-1]} agregada al area {self.nombres} en el horario {strHorario}')

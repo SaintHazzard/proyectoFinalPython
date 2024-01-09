@@ -1,9 +1,9 @@
 from classes.classAreas import *
 from processJsonToMain import *
 
-areas['Apolo'] = areasEntrenamiento('Apolo')
-areas['Artemis'] = areasEntrenamiento('Artemis')
-areas['Sputnik'] = areasEntrenamiento('Sputnik')
+areas['Apolo'] = areasEntrenamiento('Apolo',ruta='Ruta Java')
+areas['Artemis'] = areasEntrenamiento('Artemis',ruta='Ruta NetCore')
+areas['Sputnik'] = areasEntrenamiento('Sputnik',ruta='Ruta NodeJS')
 
 
 for i in areas:

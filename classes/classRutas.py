@@ -6,14 +6,14 @@ from classes.processJsonToMain import *
 class RutaEntrenamiento:
   def __init__(self, nombres=None, modulos=None, sgdbPrincipal=None, sgdbAlternativo=None):
       self.nombres = nombres
-      self.modulos = modulos or []
+      self.modulos = modulos or {}
       self.sgdbPrincipal = sgdbPrincipal
       self.sgdbAlternativo = sgdbAlternativo
 
   def printRutaEntrenamiento(self):
       print("Nombre de la ruta:", self.nombres)
       print("Modulos")
-      for modulo in self.modulos:
+      for modulo in self.modulos.values():
           print(f"\t : {', '.join(modulo)}")
       print("SGDB Principal:", self.sgdbPrincipal)
       print("SGDB Alternativo:", self.sgdbAlternativo)
