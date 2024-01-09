@@ -25,6 +25,7 @@ class Camper(Persona):
     promedio = (notaTeorica+notaPractica)/2
     return promedio
   
+  
   def getState(self):
     return self.estado
   
@@ -63,6 +64,14 @@ class Camper(Persona):
           print(f"El camper ha reprobado la admision con nota promedio de:  {round(promedio,2)}")
         with open(ruta_archivo,'w+') as archivo_json:
           json.dump(sujeto,archivo_json,indent=4)
+        if len(self.notas) == 4:
+          if self.notas["nota teorica"] and self.notas["nota practica"] and self.notas["nota trabajo"] and self.notas["nota quices"]:
+            teorica = self.notas["nota teorica"] * 0.3
+            practica = self.notas["nota practica"] * 0.6
+            otros = self.notas["nota trabajo"] + self.notas["nota quices"]
+            notafinal = teorica + practica + otros
+            print(f'La nota final del camper en el modulo fue {notafinal}')
+          
           
         # self.setCamperInArea(sujeto)  
 

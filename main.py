@@ -20,6 +20,10 @@ AREAS = {
   
 }
 
+TRAINERS = {
+  
+}
+
 
 
 
@@ -38,7 +42,7 @@ if __name__=="__main__":
 
     elec = input('Eleccion: ')
     if elec == '1':
-      submenuregistro(DATA)
+      submenuregistro(DATA,RUTAS,TRAINERS)
     if elec == '2':
       submenucamper(DATA)
       pass

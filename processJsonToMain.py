@@ -3,7 +3,7 @@ import json
 from classes.classCamper import *
 from classes.classRutas import *
 
-CARPETAS = ['jsonData/','jsonDataAreas/','jsonDataRutas/']
+CARPETAS = ['jsonData/','jsonDataAreas/','jsonDataRutas/','jsonDataTrainer/']
 
 def from_JSOn(carpeta : str) -> dict:
   """FUCNION -> READ Lee todos los archivos JSON en la carpeta que se le suministre como argumento y los guarda en una variable temporal

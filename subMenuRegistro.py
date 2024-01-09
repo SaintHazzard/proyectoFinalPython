@@ -2,8 +2,11 @@
 from toolsTest.visuals import *
 from classes.classCamper import *
 from processJsonToMain import *
+from classes.classEntrenador import *
+from classes.classEntrenador import *
+from classes.classEntrenador import *
 
-def submenuregistro(data):
+def submenuregistro(data,RUTAS,trainers):
   OPCIONES ={
     '1' : "Registro Camper",
     "2" : "Registro Docente",
@@ -18,8 +21,15 @@ def submenuregistro(data):
       wait()
       pass
     elif elec is "2":
+      documentoTrainer,*demasDatos=Entrenador.solcitarDatosTrainer(RUTAS)
+      trainers[documentoTrainer] = Entrenador(documentoTrainer,*demasDatos)
+      crearJson(trainers[documentoTrainer],f"{CARPETAS[3]}{documentoTrainer}.json")
+      wait()
       pass
     elif elec is "0":
       break
+    elif elec is "2":
+      
+      pass
   
 
