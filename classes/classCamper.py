@@ -41,7 +41,7 @@ class Camper(Persona):
         with open(ruta_archivo, 'r') as archivo_json:
           sujeto = json.load(archivo_json)
         elec=input("\n".join([f'{key}. {value}' for key,value in OPCIONES.items()]) + "\n" + "0. Menu principal\n")
-        if elec in OPCIONES:
+        if elec in OPCIONES or elec == "0":
           if elec == '0':
             print('Volviendo al menu principal...')
             break
@@ -105,8 +105,9 @@ class Camper(Persona):
   def verifyBothCal(self):
     if self.notas['nota teorica'] and self.notas['nota practica']:
       return True
-    if not self.notas['nota teorica']:
+    if not self.notas['nota teorica'] and len(self.notas) == 2:
       print("La nota teorica aun no ha sido registrada")
-    if not self.notas['nota practica']:
+    if not self.notas['nota practica'] and len(self.notas) == 2:
       print("La nota practica aun no ha sido registrada")
+    print('El Camper no tiene todas las notas registradas, no se le puede asignar area')
     return False

@@ -55,9 +55,8 @@ if __name__=="__main__":
         elec = input('A que area desea agregar el camper?: ')
         areas[OPCIONESAREAS[elec]].agregarIntegrante(objetCamper,CARPETAS[1])
         # print(areas[OPCIONESAREAS[elec]].horarios)
-      elif not objetCamper.verifyBothCal():
-        print('El Camper no tiene todas las notas registradas, no se le puede asignar area')
-      elif objetCamper.getPromedio() < 60:
+        objetCamper.verifyBothCal()
+      elif objetCamper.getPromedio() < 60 and len(objetCamper.notas) == 2:
         print(f"El camper ha reprobado la admision con nota promedio de:  {round(objetCamper.getPromedio(),2)} no se le puede asignar area")
       input('Esperar test')
       pass
