@@ -1,0 +1,19 @@
+{
+    "documento": "123",
+    "nombres": "Ale",
+    "apellidos": "Mar",
+    "movil": "123",
+    "rutas": {
+        "Ruta NetCore": "Ruta NetCore",
+        "Desarrollo Backend": "Desarrollo Backend",
+        "Django": "Django",
+        "Ruta Java": "Ruta Java"
+    },
+    "horarios": {
+        "18:00 a 22:00": "Sputnik",
+        "10:00 a 14:00": "Sputnik",
+        "6:00 a 10:00": "Sputnik",
+        "14:00 a 18:00": "Sputnik"
+    },
+    "horario": null
+}
