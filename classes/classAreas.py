@@ -7,10 +7,10 @@ class areasEntrenamiento:
   def __init__(self,nombres=None,capacidad=0,ruta=None) -> object:
     self.nombres = nombres
     # self.ruta = ''
-    self.horarios = {"6:00 a 10:00":{"integrantes":{},"capacidad":capacidad, "ruta" : ruta ,"Trainer": None}, 
-                           "10:00 a 14:00": {"integrantes":{},"capacidad":capacidad, "ruta" : ruta,"Trainer": None},
-                           "14:00 a 18:00": {"integrantes":{},"capacidad":capacidad, "ruta" : ruta,"Trainer": None},
-                           "18:00 a 22:00": {"integrantes":{},"capacidad":capacidad, "ruta" : ruta,"Trainer": None}
+    self.horarios = {"6:00 a 10:00":{"integrantes":{},"capacidad":capacidad, "rutas" : ruta ,"Trainer": None}, 
+                           "10:00 a 14:00": {"integrantes":{},"capacidad":capacidad, "rutas" : ruta,"Trainer": None},
+                           "14:00 a 18:00": {"integrantes":{},"capacidad":capacidad, "rutas" : ruta,"Trainer": None},
+                           "18:00 a 22:00": {"integrantes":{},"capacidad":capacidad, "rutas" : ruta,"Trainer": None}
                            }
     
   
@@ -48,24 +48,27 @@ class areasEntrenamiento:
     
   def SetearValores(self,strHorario,sujeto,RUTAS):
     integrantes = self.horarios[strHorario]["integrantes"]
-    
-    if sujeto.documento not in integrantes:
-      nombreRuta = self.horarios[strHorario]['rutas']
-      sujeto.ruta = RUTAS[nombreRuta].__dict__
-      sujeto.area = self.nombres
-      sujeto.horario = strHorario
-      sujeto.notas['nota trabajo'] = 0
-      sujeto.notas['nota quices'] = 0
-      # sujeto.ruta = self.horarios[strHorario]['rutas']
-      sujeto.notas = {key: 0 for key in sujeto.notas}
-      reInstanciar(Camper,sujeto.__dict__)
-      crearJson(sujeto,f"{CARPETAS[0]}{sujeto.documento}.json")
-      individuo = sujeto.__dict__
-      integrantes[sujeto.documento] = f"{individuo['nombres']} {individuo['apellidos']}"
-      # integrantes[sujeto.nombres][integrantes[sujeto.documento]] = individuo['nombres']
-      self.horarios[strHorario]["capacidad"] += 1
-    else:
-      print('El camper ya esta asignado')
+    if self.horarios[strHorario]['rutas'] != None:
+      if sujeto.documento not in integrantes:
+        nombreRuta = self.horarios[strHorario]['rutas']
+        sujeto.ruta = RUTAS[nombreRuta].__dict__
+        sujeto.area = self.nombres
+        sujeto.horario = strHorario
+        sujeto.notas['nota trabajo'] = 0
+        sujeto.notas['nota quices'] = 0
+        # sujeto.ruta = self.horarios[strHorario]['rutas']
+        sujeto.notas = {key: 0 for key in sujeto.notas}
+        reInstanciar(Camper,sujeto.__dict__)
+        crearJson(sujeto,f"{CARPETAS[0]}{sujeto.documento}.json")
+        individuo = sujeto.__dict__
+        integrantes[sujeto.documento] = f"{individuo['nombres']} {individuo['apellidos']}"
+        # integrantes[sujeto.nombres][integrantes[sujeto.documento]] = individuo['nombres']
+        self.horarios[strHorario]["capacidad"] += 1
+      else:
+        print('El camper ya esta asignado')
+    elif self.horarios[strHorario]['rutas'] is None:
+      print('El area no tiene ruta asignada aun, asignele ruta para agregar Campers')
+      
   
   def setRuta(self,rutasExistentes,integrantes):
     HORARIOS = {
@@ -85,7 +88,7 @@ class areasEntrenamiento:
       strHorario = HORARIOS[elec]
     # with open()
     rutaSeleccionada = rutasExistentes[rutasJson[int(numRuta)-1]]
-    self.horarios[strHorario]["ruta"] = rutaSeleccionada.__dict__["nombres"]
+    self.horarios[strHorario]["rutas"] = rutaSeleccionada.__dict__["nombres"]
     
     dictIntegrantesArea = self.horarios[strHorario]["integrantes"]
     for key,value in integrantes.items():

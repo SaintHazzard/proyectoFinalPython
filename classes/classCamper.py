@@ -119,17 +119,32 @@ class Camper(Persona):
   
 
   @staticmethod
-  def solicitar_datos_camper():
-    documento = input("Ingrese el documento: ")
-    nombres = input("Ingrese los nombres: ")
-    apellidos = input("Ingrese los apellidos: ")
-    movil = input("Ingrese el número de móvil: ")
-    fijo = input("Ingrese el número fijo: ")
-    direccion = input("Ingrese la dirección: ")
-    acudiente = input("Ingrese el nombre del acudiente: ")
-    # estado = input("Ingrese el estado: ")
-    # ruta = input("Ingrese la ruta: ")
-    return documento, nombres, apellidos, movil, fijo, direccion, acudiente
+  def solicitar_datos_camper(data):
+    while True:
+      documento = input("Ingrese el documento: ")
+      if documento in data:
+        print('Ya hay un camper registrado con este documento')
+        continue
+      if not documento.isdigit():
+        print('Ingrese un numero trolazo')
+        continue
+      nombres = input("Ingrese los nombres: ")
+      apellidos = input("Ingrese los apellidos: ")
+      if apellidos.isalpha() or nombres.isalpha():
+        print('Datos en nombres y apellidos incorrectos porque contiene numeros')
+        continue
+      movil = input("Ingrese el número de móvil: ")
+      fijo = input("Ingrese el número fijo: ")
+      if not movil.isdigit() and not fijo.isdigit():
+        print("Valos ingresados en movil o fijo no validos")
+      direccion = input("Ingrese la dirección: ")
+      acudiente = input("Ingrese el nombre del acudiente: ")
+      if not acudiente.isalpha():
+        print('Ingrese nombre del acudiente correctamente')
+        continue
+      # estado = input("Ingrese el estado: ")
+      # ruta = input("Ingrese la ruta: ")
+      return documento, nombres, apellidos, movil, fijo, direccion, acudiente
 
 
   def setCamperInArea(self,sujeto):

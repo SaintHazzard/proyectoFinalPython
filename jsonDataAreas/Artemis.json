@@ -4,25 +4,25 @@
         "6:00 a 10:00": {
             "integrantes": {},
             "capacidad": 0,
-            "ruta": null,
+            "rutas": null,
             "Trainer": null
         },
         "10:00 a 14:00": {
             "integrantes": {},
             "capacidad": 0,
-            "ruta": null,
+            "rutas": null,
             "Trainer": null
         },
         "14:00 a 18:00": {
             "integrantes": {},
             "capacidad": 0,
-            "ruta": null,
+            "rutas": null,
             "Trainer": null
         },
         "18:00 a 22:00": {
             "integrantes": {},
             "capacidad": 0,
-            "ruta": null,
+            "rutas": null,
             "Trainer": null
         }
     }

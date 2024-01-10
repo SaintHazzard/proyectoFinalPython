@@ -1,21 +1,51 @@
 {
     "documento": "1",
-    "nombres": "Alejandro",
-    "apellidos": "Martinez Santos",
+    "nombres": "sfds",
+    "apellidos": "dfsfs",
     "telefonos": {
-        "movil": 3214321455,
-        "fijo": 8883599
+        "movil": "gfdgfd",
+        "fijo": "sadasd"
     },
-    "direccion": "Monviso",
-    "acudiente": "Mi madresita",
-    "estado": "Inscrito",
-    "ruta": {},
-    "area": null,
-    "horario": null,
+    "direccion": "gfgd",
+    "acudiente": "dsfdsfds",
+    "estado": "Aprobado",
+    "ruta": {
+        "nombres": "Desarrollo Backend",
+        "modulos": {
+            "fundamentos": [
+                "Introducci\u00f3n a la algoritmia",
+                "PSeInt",
+                "Python"
+            ],
+            "formal": [
+                "Java",
+                "JavaScript",
+                "C#"
+            ],
+            "backend": [
+                "NetCore",
+                "Spring Boot",
+                "NodeJS",
+                "Express"
+            ]
+        },
+        "sgdbPrincipal": "PostgreSQL",
+        "sgdbAlternativo": "MySQL"
+    },
+    "area": "Sputnik",
+    "horario": "10:00 a 14:00",
     "notas": {
         "nota teorica": 0,
-        "nota practica": 0
+        "nota practica": 0,
+        "nota trabajo": 0,
+        "nota quices": 0
     },
-    "notasHistory": {},
+    "notasHistory": {
+        "admision": {
+            "nota teorica": 90,
+            "nota practica": 100,
+            "nota final": 95.0
+        }
+    },
     "riesgo": null
 }
