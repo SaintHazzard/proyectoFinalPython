@@ -9,7 +9,23 @@
     "direccion": "Monviso",
     "acudiente": "Mi madresita",
     "estado": "Aprobado",
-    "ruta": "Ruta NodeJS",
+    "ruta": {
+        "nombres": "Django",
+        "modulos": {
+            "fundamentos": [
+                "Introducci\u00f3n a la algoritmia",
+                "PSeInt",
+                "Python"
+            ],
+            "web": [
+                "HTML",
+                "CSS",
+                "Bootstrap"
+            ]
+        },
+        "sgdbPrincipal": "MySQL",
+        "sgdbAlternativo": "MongoDB"
+    },
     "area": "Sputnik",
     "horario": "6:00 a 10:00",
     "notas": {
@@ -17,5 +33,12 @@
         "nota practica": 0,
         "nota trabajo": 0,
         "nota quices": 0
+    },
+    "notasHistory": {
+        "admision": {
+            "nota teorica": 100,
+            "nota practica": 100,
+            "nota final": 100.0
+        }
     }
 }

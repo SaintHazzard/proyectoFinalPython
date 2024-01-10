@@ -36,7 +36,7 @@ def procesarJsonToCamper(CLASE,dictInMain,temporalDatosJson : dict) -> None:
 """Funcion que simula el antiguo From_DICT que reinstanciaba la clase
 """
 def reInstanciar(CLASE : classmethod,diccionario:dict) -> object:
-  # print(CLASE.__dict__)
+    # print(CLASE.__dict__)
   # setattr(CLASE, 'documento', 1)
   instancia = CLASE()
   for clave, valor in diccionario.items():

@@ -9,11 +9,12 @@
     "direccion": "Direccion: El weon se doxea solo",
     "acudiente": "Martiza Pineda Celis",
     "estado": "Inscrito",
-    "ruta": null,
+    "ruta": {},
     "area": null,
     "horario": null,
     "notas": {
-        "nota teorica": 60,
-        "nota practica": 30
-    }
+        "nota teorica": 0,
+        "nota practica": 0
+    },
+    "notasHistory": {}
 }

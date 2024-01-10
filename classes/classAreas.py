@@ -7,10 +7,10 @@ class areasEntrenamiento:
   def __init__(self,nombres=None,capacidad=0,ruta=None) -> object:
     self.nombres = nombres
     # self.ruta = ''
-    self.horarios = {"6:00 a 10:00":{"integrantes":{},"capacidad":capacidad, "ruta" : ruta}, 
-                           "10:00 a 14:00": {"integrantes":{},"capacidad":capacidad, "ruta" : ruta},
-                           "14:00 a 18:00": {"integrantes":{},"capacidad":capacidad, "ruta" : ruta},
-                           "18:00 a 22:00": {"integrantes":{},"capacidad":capacidad, "ruta" : ruta}
+    self.horarios = {"6:00 a 10:00":{"integrantes":{},"capacidad":capacidad, "ruta" : ruta ,"Trainer": None}, 
+                           "10:00 a 14:00": {"integrantes":{},"capacidad":capacidad, "ruta" : ruta,"Trainer": None},
+                           "14:00 a 18:00": {"integrantes":{},"capacidad":capacidad, "ruta" : ruta,"Trainer": None},
+                           "18:00 a 22:00": {"integrantes":{},"capacidad":capacidad, "ruta" : ruta,"Trainer": None}
                            }
     
   
@@ -23,7 +23,7 @@ class areasEntrenamiento:
     for i,hora in enumerate(horarios):
         print(f"\t{hora}: \n\t\tIntegrantes: {horarios[hora]['capacidad']}")
   
-  def agregarIntegrante(self,integrante,carpeta):
+  def agregarIntegrante(self,integrante,carpeta,RUTAS):
     HORARIOS = {
     '1': "6:00 a 10:00",
     '2': "10:00 a 14:00",
@@ -37,7 +37,7 @@ class areasEntrenamiento:
       #   area = json.load(archivo_json)
       strHorario = HORARIOS[elec]
       if self.validarNIntegtrantes(strHorario):
-        self.SetearValores(strHorario,integrante)
+        self.SetearValores(strHorario,integrante,RUTAS)
         with open(ruta_Archivo, "w") as archivo_json:
           json.dump(self.__dict__,archivo_json,indent=4)
   
@@ -46,15 +46,17 @@ class areasEntrenamiento:
       return True
     else: False
     
-  def SetearValores(self,strHorario,sujeto):
+  def SetearValores(self,strHorario,sujeto,RUTAS):
     integrantes = self.horarios[strHorario]["integrantes"]
     
     if sujeto.documento not in integrantes:
+      nombreRuta = self.horarios[strHorario]['rutas']
+      sujeto.ruta = RUTAS[nombreRuta].__dict__
       sujeto.area = self.nombres
       sujeto.horario = strHorario
       sujeto.notas['nota trabajo'] = 0
       sujeto.notas['nota quices'] = 0
-      sujeto.ruta = self.horarios[strHorario]['ruta']
+      # sujeto.ruta = self.horarios[strHorario]['rutas']
       sujeto.notas = {key: 0 for key in sujeto.notas}
       reInstanciar(Camper,sujeto.__dict__)
       crearJson(sujeto,f"{CARPETAS[0]}{sujeto.documento}.json")
@@ -71,9 +73,13 @@ class areasEntrenamiento:
     '2': "10:00 a 14:00",
     '3': "14:00 a 18:00",
     '4': "18:00 a 22:00"}
-    rutasJson = list(from_JSOn(CARPETAS[2]).keys())
+    # rutasJson = list(from_JSOn(CARPETAS[2]).keys())
     print('Que ruta desea agregar al area :')
+    temporalDatosJson = from_JSOn(CARPETAS[2]);procesarJsonToCamper(RutaEntrenamiento,rutasExistentes,temporalDatosJson)
     numRuta = input(("\n".join([f'{i+1}. {rutasExistentes[ruta].nombres}' for i,ruta in enumerate(rutasExistentes)])) + "\nEleccion: ")
+    rutasJson = list(rutasExistentes.keys())
+    print(rutasExistentes)
+    print(rutasJson)
     elec = input("\n".join([f"{key}. {value}" for key,value in HORARIOS.items()]) + "\n")
     if elec in HORARIOS:
       strHorario = HORARIOS[elec]

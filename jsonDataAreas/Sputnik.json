@@ -3,25 +3,34 @@
     "horarios": {
         "6:00 a 10:00": {
             "integrantes": {
+                "2": "Oviel 2 Mendoza Pineda",
                 "1": "Alejandro Martinez Santos"
             },
-            "capacidad": 1,
-            "ruta": "Ruta NodeJS"
+            "capacidad": 3,
+            "ruta": null,
+            "Trainer": "Ale",
+            "rutas": "Django"
         },
         "10:00 a 14:00": {
             "integrantes": {},
             "capacidad": 0,
-            "ruta": "Ruta NodeJS"
+            "ruta": null,
+            "Trainer": "Ale",
+            "rutas": "Desarrollo Backend"
         },
         "14:00 a 18:00": {
             "integrantes": {},
             "capacidad": 0,
-            "ruta": "Ruta NodeJS"
+            "ruta": null,
+            "Trainer": "Ale",
+            "rutas": "Ruta Java"
         },
         "18:00 a 22:00": {
             "integrantes": {},
             "capacidad": 0,
-            "ruta": "Ruta NodeJS"
+            "ruta": null,
+            "Trainer": "Ale",
+            "rutas": "Ruta NetCore"
         }
     }
 }

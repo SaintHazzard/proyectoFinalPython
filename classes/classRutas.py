@@ -76,11 +76,11 @@ def agregarModulos(MODULOS):
 
         if moduloSeleccionado in MODULOS:
             if moduloSeleccionado not in ruta_modulos:
-                print(MODULOS[moduloSeleccionado])
+                # print(MODULOS[moduloSeleccionado])
                 
                 ruta_modulos[moduloSeleccionado]=MODULOS[moduloSeleccionado]
-                print(ruta_modulos)
-                input()
+                # print(ruta_modulos)
+                # input()
                 MODULOS.pop(moduloSeleccionado)
                 MODULOSNAME.remove(moduloSeleccionado)
                 print(f'\t\tModulo {moduloSeleccionado.capitalize()} agregado')

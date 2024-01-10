@@ -4,9 +4,10 @@ from classes.classRutas import *
 def submenucamper(data):
   OPCIONES = {
     "1" : "Ingreso de notas",
-    '2' : "Listar todos",
+    '2' : "Listar inscritos",
     "3" : "Listar Campers con bajo rendimiento",
     "4" : "Listar Campers aprobados",
+    # "5" : "Agregar notas de modulos",
     "0" : "Menu anterior"
   }
   while True:
@@ -25,6 +26,16 @@ def submenucamper(data):
         for documento in data:
           print('-'*50)
           data[documento].showData()
+        wait()
+        pass
+      elif elec is "3":
+        print('Los campers con bajo rendimiento son: ')
+        for documento in data:
+          camper = data[documento]
+          if camper.riesgo == 'Alto':
+            ultimaLlave = list(camper.notasHistory.keys())[-1]
+            print(ultimaLlave)
+            print(f'Nombre: {camper.nombres} esta en riesgo {camper.riesgo} su nota en el ultimo modulo {ultimaLlave} fue {camper.notasHistory[ultimaLlave]["nota final"]}')
         wait()
         pass
       elif elec is "4":

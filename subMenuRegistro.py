@@ -6,7 +6,7 @@ from classes.classEntrenador import *
 from classes.classEntrenador import *
 from classes.classEntrenador import *
 
-def submenuregistro(data,RUTAS,trainers):
+def submenuregistro(data,TRAINERS):
   OPCIONES ={
     '1' : "Registro Camper",
     "2" : "Registro Docente",
@@ -21,9 +21,14 @@ def submenuregistro(data,RUTAS,trainers):
       wait()
       pass
     elif elec is "2":
-      documentoTrainer,*demasDatos=Entrenador.solcitarDatosTrainer(RUTAS)
-      trainers[documentoTrainer] = Entrenador(documentoTrainer,*demasDatos)
-      crearJson(trainers[documentoTrainer],f"{CARPETAS[3]}{documentoTrainer}.json")
+      documentoTrainer,*demasDatos=Entrenador.solcitarDatosTrainer(TRAINERS)
+      for i,k in TRAINERS.items():
+        print(i,k)
+      if documentoTrainer not in TRAINERS:
+        TRAINERS[documentoTrainer] = Entrenador(documentoTrainer,*demasDatos)
+        crearJson(TRAINERS[documentoTrainer],f"{CARPETAS[3]}{documentoTrainer}.json")
+        input("Entra aca")
+        temporalDatosJson = from_JSOn(CARPETAS[3]);procesarJsonToCamper(Entrenador,TRAINERS,temporalDatosJson)
       wait()
       pass
     elif elec is "0":

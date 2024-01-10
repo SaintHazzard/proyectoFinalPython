@@ -9,11 +9,12 @@
     "direccion": "Tandamandapio",
     "acudiente": "Jaimito el cartero",
     "estado": "Inscrito",
-    "ruta": null,
+    "ruta": {},
     "area": null,
     "horario": null,
     "notas": {
         "nota teorica": 0,
         "nota practica": 0
-    }
+    },
+    "notasHistory": {}
 }
