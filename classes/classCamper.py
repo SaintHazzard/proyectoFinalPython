@@ -1,6 +1,7 @@
 from classes.persona import *
 from validarValores import *
 
+
 class Camper(Persona):
   def __init__(self, documento = 0, nombres ='', apellidos='', movil=0, fijo=0, direccion='', acudiente='',
                 notaTeorica=None, notaPractica=None, estado='Inscrito', ruta=None) -> Persona:
@@ -119,14 +120,14 @@ class Camper(Persona):
   
 
   @staticmethod
-  def solicitar_datos_camper(data):
+  def solicitar_datos_camper(data,TRAINERS):
     while True:
         documento = input("Ingrese el documento: ")
 
-        if documento in data:
-            print('Ya hay un camper registrado con este documento')
+        if documento in data or documento in TRAINERS:
+            mostrar_error("Ya hay una persona registrada con este documento")
         elif not documento.isdigit():
-            print('Ingrese un número válido')
+            mostrar_error("Ingrese un número")
         else:
             break  # Si el documento es válido, salimos del bucle
 
@@ -134,7 +135,7 @@ class Camper(Persona):
         nombres = input("Ingrese los nombres: ")
 
         if not nombres.isalpha():
-            print('Datos en nombres incorrectos porque contiene números')
+            mostrar_error("Datos en nombres incorrectos porque contiene números")
         else:
             break  # Si los nombres son válidos, salimos del bucle
 
@@ -142,7 +143,7 @@ class Camper(Persona):
         apellidos = input("Ingrese los apellidos: ")
 
         if not apellidos.isalpha():
-            print('Datos en apellidos incorrectos porque contiene números')
+            mostrar_error("Datos en apellidos incorrectos porque contiene números")
         else:
             break  # Si los apellidos son válidos, salimos del bucle
 
@@ -151,7 +152,7 @@ class Camper(Persona):
         fijo = input("Ingrese el número fijo: ")
 
         if not movil.isdigit() or not fijo.isdigit():
-            print("Valores ingresados en móvil o fijo no válidos")
+            mostrar_error("Valores ingresados en móvil o fijo no válidos")
         else:
             break  # Si los datos de contacto son válidos, salimos del bucle
 
@@ -161,7 +162,7 @@ class Camper(Persona):
         acudiente = input("Ingrese el nombre del acudiente: ")
 
         if not acudiente.isalpha():
-            print('Ingrese nombre del acudiente correctamente')
+            mostrar_error("Ingrese nombre del acudiente correctamente")
         else:
             break  # Si el nombre del acudiente es válido, salimos del bucle
 

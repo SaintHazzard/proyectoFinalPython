@@ -6,7 +6,7 @@ def listarCamperTrainer(RUTAS,DATA,TRAINERS):
   for trainer in TRAINERS:
     if RUTASNAME[int(elec)-1] in TRAINERS[trainer].rutas:
       print(f'El Trainer {TRAINERS[trainer].nombres} esta vinculado a la ruta {RUTASNAME[int(elec)-1]}')
-  wait()
+  separacion()
   for camper in DATA:
     if DATA[camper].ruta:
       if RUTASNAME[int(elec)-1] == DATA[camper].ruta['nombres']:
@@ -16,7 +16,7 @@ def listarCamperModulo(RUTAS,DATA,TRAINERS):
   elec = input("\n".join([f'{key+1}. {value}' for key,value in enumerate(RUTAS.keys())]) + "\nEleccion: ")
   if not elec.isdigit():
     print('Eleccion no valida')
-    wait()
+    separacion()
     return
   print("Que trainer desea consultar: ")
   elecTrainer = input("\n".join([f'{key+1}. {value.nombres}' for key,value in enumerate(TRAINERS.values())]) + "\nEleccion: ")
@@ -30,15 +30,15 @@ def listarCamperModulo(RUTAS,DATA,TRAINERS):
         if DATA[camper].ruta:
           if RUTASNAME[int(elec)-1] in DATA[camper].ruta['nombres'] and DATA[camper].riesgo == 'Bajo':
             DATA[camper].showData()
-      wait()     
+      separacion()     
       print(f'Los camper reprobados en el ultimo modulo con el Trainer {TRAINERS[TRAINERSNAME[int(elecTrainer)-1]].nombres} fueron: ')
       for camper in DATA:
         if DATA[camper].ruta:
           if RUTASNAME[int(elec)-1] in DATA[camper].ruta['nombres'] and DATA[camper].riesgo == 'Alto':
             DATA[camper].showData()
-    wait()     
+    separacion()     
     pass
-  else: print('El trainer no tiene asignado esa ruta.');wait()
+  else: print('El trainer no tiene asignado esa ruta.');separacion()
   pass
 
 
@@ -59,12 +59,13 @@ def submenutrainer(TRAINERS,RUTAS,DATA):
   }
   elec = input("\n".join([f'{key}. {value}' for key,value in OPCIONES.items()]) + "\nEleccion: ")
   if elec is "1":
+    print()
     for trainer in TRAINERS:
       TRAINERS[trainer].showTrainer()
-    wait()
+      separacion()
   elif elec is '2':
     listarCamperTrainer(RUTAS,DATA,TRAINERS)
-    wait()
+    separacion()
     pass
   elif elec is "3":
     listarCamperModulo(RUTAS,DATA,TRAINERS)

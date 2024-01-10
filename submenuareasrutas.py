@@ -22,6 +22,10 @@ def submenuareasyrutas(DATA,AREAS,RUTAS,TRAINERS,CARPETAS):
     elec = input("\n".join([f'{key}. {value}' for key,value in OPCIONES.items()]) + "\nEleccion: ")
     if elec is "1":
       print("***Asignar area al camper***")
+      for i in DATA:
+        if DATA[i].estado == "Inscrito":
+          print(f'Documento: {DATA[i].documento} {DATA[i].nombres} {DATA[i].apellidos}')
+        
       id= input('Indique el documento del camper: ')
       objetCamper = DATA[id]
       if objetCamper.verifyAreaCamper() and objetCamper.getPromedio() >= 60 and len(objetCamper.notas) == 2:
@@ -67,4 +71,4 @@ def submenuareasyrutas(DATA,AREAS,RUTAS,TRAINERS,CARPETAS):
       break
     else : 
       print("Eleccion no valida, Ingrese una opcion valida")
-    wait()
+    separacion()

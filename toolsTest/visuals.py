@@ -14,3 +14,11 @@ if __name__ == "__main__":
   pass
    
 
+def mostrar_error(mensaje):
+    print(f"{'*' * 5} Error: {mensaje} No válido {'*' * 5}")
+    
+
+
+def separacion():
+  print("\t"+"*" * 50)
+  wait()

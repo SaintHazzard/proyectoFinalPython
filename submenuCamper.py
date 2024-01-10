@@ -15,18 +15,23 @@ def submenucamper(data):
     elec = input("\n".join([f'{key}. {value}' for key,value in OPCIONES.items()]) + "\nEleccion: ")
     if elec in OPCIONES:
       if elec == "1":
+        print()
+        for i in data:
+          if data[i].estado:
+            print(f'Documento: {data[i].documento} {data[i].nombres} {data[i].apellidos}')
         documento=input('Documento del camper a registrar nota: ')
+        
         estado = data[documento].getState()
         if estado == 'Inscrito' or "Aprobado":
           data[documento].setNota()
         else: print(f"Solo puede registrar nota de campers con el estado de 'Inscrito' y el estado del camper con documento {documento} es {data[documento].getState()}")
-        wait()
+        separacion()
         
       elif elec is "2":
         for documento in data:
           print('-'*50)
           data[documento].showData()
-        wait()
+        separacion()
         pass
       elif elec is "3":
         print('Los campers con bajo rendimiento son: ')
@@ -36,13 +41,13 @@ def submenucamper(data):
             ultimaLlave = list(camper.notasHistory.keys())[-1]
             print(ultimaLlave)
             print(f'Nombre: {camper.nombres} esta en riesgo {camper.riesgo} su nota en el ultimo modulo {ultimaLlave} fue {camper.notasHistory[ultimaLlave]["nota final"]}')
-        wait()
+        separacion()
         pass
       elif elec is "4":
         print(f'Los campers aprobados fueron: ')
         for documento in data:
           data[documento].showDataAprobado()
-        wait()
+        separacion()
         pass
       elif elec is "0":
         break
@@ -56,5 +61,5 @@ def submenucamper(data):
 
     else: 
       print("Eleccion no valida, Ingrese una opcion valida")
-      wait()
+      separacion()
     pass

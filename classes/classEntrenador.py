@@ -70,7 +70,10 @@ class Entrenador:
       
 
   def showTrainer(self):
-    print(f'El trainer {self.documento} {self.nombres} {f"tiene los horarios {self.horarios}" if len(self.horarios) > 0 else "no tiene horarios asignados"}')
+    print(f'El trainer {self.documento} {self.nombres} tiene los horarios: ')
+    showDict = {clave: self.horarios[clave] for clave in self.horarios}
+    for key,val in showDict.items():
+      print(f'{key} en el salon {val}' )
     pass
   
   # @staticmethod
