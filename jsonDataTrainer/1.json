@@ -1,0 +1,14 @@
+{
+    "documento": "1",
+    "nombres": "Miguel",
+    "apellidos": "Toca",
+    "movil": "1456",
+    "rutas": {
+        "Ruta Java": "Ruta Java",
+        "Django": "Django"
+    },
+    "horarios": {
+        "6:00 a 10:00": "Sputnik",
+        "10:00 a 14:00": "Sputnik"
+    }
+}
