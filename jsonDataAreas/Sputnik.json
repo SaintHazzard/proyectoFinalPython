@@ -2,35 +2,28 @@
     "nombres": "Sputnik",
     "horarios": {
         "6:00 a 10:00": {
-            "integrantes": {
-                "2": "Oviel 2 Mendoza Pineda",
-                "1": "Alejandro Martinez Santos"
-            },
-            "capacidad": 3,
+            "integrantes": {},
+            "capacidad": 0,
             "ruta": null,
-            "Trainer": "Ale",
-            "rutas": "Django"
+            "Trainer": null
         },
         "10:00 a 14:00": {
             "integrantes": {},
             "capacidad": 0,
             "ruta": null,
-            "Trainer": "Ale",
-            "rutas": "Desarrollo Backend"
+            "Trainer": null
         },
         "14:00 a 18:00": {
             "integrantes": {},
             "capacidad": 0,
             "ruta": null,
-            "Trainer": "Ale",
-            "rutas": "Ruta Java"
+            "Trainer": null
         },
         "18:00 a 22:00": {
             "integrantes": {},
             "capacidad": 0,
             "ruta": null,
-            "Trainer": "Ale",
-            "rutas": "Ruta NetCore"
+            "Trainer": null
         }
     }
 }

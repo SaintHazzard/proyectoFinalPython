@@ -8,37 +8,14 @@
     },
     "direccion": "Monviso",
     "acudiente": "Mi madresita",
-    "estado": "Aprobado",
-    "ruta": {
-        "nombres": "Django",
-        "modulos": {
-            "fundamentos": [
-                "Introducci\u00f3n a la algoritmia",
-                "PSeInt",
-                "Python"
-            ],
-            "web": [
-                "HTML",
-                "CSS",
-                "Bootstrap"
-            ]
-        },
-        "sgdbPrincipal": "MySQL",
-        "sgdbAlternativo": "MongoDB"
-    },
-    "area": "Sputnik",
-    "horario": "6:00 a 10:00",
+    "estado": "Inscrito",
+    "ruta": {},
+    "area": null,
+    "horario": null,
     "notas": {
         "nota teorica": 0,
-        "nota practica": 0,
-        "nota trabajo": 0,
-        "nota quices": 0
+        "nota practica": 0
     },
-    "notasHistory": {
-        "admision": {
-            "nota teorica": 100,
-            "nota practica": 100,
-            "nota final": 100.0
-        }
-    }
+    "notasHistory": {},
+    "riesgo": null
 }

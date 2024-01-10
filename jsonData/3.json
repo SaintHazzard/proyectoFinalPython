@@ -16,5 +16,6 @@
         "nota teorica": 0,
         "nota practica": 0
     },
-    "notasHistory": {}
+    "notasHistory": {},
+    "riesgo": null
 }
