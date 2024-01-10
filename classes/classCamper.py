@@ -54,7 +54,7 @@ class Camper(Persona):
           sujeto = json.load(archivo_json)
 
         elec=input("\n".join([f'{key}. {value}' for key,value in OPCIONES.items()]) + "\n" + "0. Menu principal\n")
-
+        
         if elec in OPCIONES or elec == "0":
           if elec == '0':
             print('Volviendo al menu principal...')
@@ -73,13 +73,16 @@ class Camper(Persona):
           self.notasHistory["admision"] = self.notas
           # print(self.notasHistory)
           # print(self.notasHistory["admision"], "aca")
-          input("Esperar")
           self.estado = 'Aprobado'
           sujeto['estado'] = self.estado
           sujeto['notasHistory']['admision'] = self.notasHistory["admision"]
           # crea un json con el objeto modificado
         if self.notas['nota practica'] and self.notas['nota teorica'] and promedio < 60 and len(self.notas) == 2:
           print(f"El camper ha reprobado la admision con nota promedio de:  {round(promedio,2)}")
+          
+          
+          """Esta es la logica de cuando el estudiante ya esta aprobado y tiene 4 notas
+          """
         if len(self.notas) == 4 and self.notas["nota teorica"] and self.notas["nota practica"] and self.notas["nota trabajo"] and self.notas["nota quices"]:
           print("A que modulo desea agregar notas las notas: ")
           OPCIONESMODULOS = {str(i+1): key.capitalize() for i,key in enumerate(self.ruta['modulos'])}
@@ -92,8 +95,6 @@ class Camper(Persona):
           SUBMODULOS = self.ruta['modulos'][OPCIONESMODULOS[elecMod].lower()]
           promedio = self.getPromedio()
           # self.notas['nota final'] = promedio
-          
-          
           teorica = self.notas["nota teorica"] * 0.3
           practica = self.notas["nota practica"] * 0.6
           otros = (self.notas["nota trabajo"] + self.notas["nota quices"]) / 2 * 0.1

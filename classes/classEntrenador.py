@@ -11,27 +11,52 @@ class Entrenador:
       self.horarios = {}
       
   @staticmethod
-  def solcitarDatosTrainer(TRAINERS):
+  def solcitarDatosTrainer(TRAINERS,DATA):
     while True:
-      documento = input("Ingrese el documento: ")
+      documento = input("Ingrese el documento (o 'salir' para terminar): ")
+      
+      if documento.lower() == 'salir':
+          print("Saliendo del registro.")
+          break
+
       if not documento.isdigit():
-        print('Ingrese solo numeros en el numero de documento: ')
-        continue
-      if documento not in TRAINERS:
-        nombres = input("Ingrese los nombres: ")
-        apellidos = input("Ingrese los apellidos: ")
-        if not nombres.isalpha() and apellidos.isalpha():
-          print('Ingrese letras en nombres y apellidos')
+          print('Ingrese solo números en el número de documento: ')
           continue
-        movil = input("Ingrese el número de móvil: ")
-        if not movil.isdigit():
-          print('Ingrese solo numero en el numero movil')
-          continue
-        print('Trainer registrado')
-        return documento,nombres,apellidos,movil,
+
+      if documento not in TRAINERS and documento not in DATA:
+          while True:
+              nombres = input("Ingrese los nombres (o 'salir' para terminar): ")
+
+              if nombres.lower() == 'salir':
+                  print("Saliendo del registro.")
+                  break
+
+              apellidos = input("Ingrese los apellidos (o 'salir' para terminar): ")
+
+              if apellidos.lower() == 'salir':
+                  print("Saliendo del registro.")
+                  break
+
+              if not nombres.isalpha() or not apellidos.isalpha():
+                  print('Ingrese letras en nombres y apellidos')
+                  continue
+
+              while True:
+                  movil = input("Ingrese el número de móvil (o 'salir' para terminar): ")
+
+                  if movil.lower() == 'salir':
+                      print("Saliendo del registro.")
+                      break
+
+                  if not movil.isdigit():
+                      print('Ingrese solo números en el número móvil')
+                      continue
+
+                  print('Trainer registrado')
+                  return documento, nombres, apellidos, movil
       else:
-        print("El documento esta relacionado a otro trainer")
-        return list(TRAINERS[documento].__dict__.values())
+          print("El documento está relacionado a otro trainer")
+          return list(TRAINERS[documento].__dict__.values())
         
       
     

@@ -13,7 +13,7 @@
     "area": null,
     "horario": null,
     "notas": {
-        "nota teorica": 0,
+        "nota teorica": 100,
         "nota practica": 0
     },
     "notasHistory": {},
