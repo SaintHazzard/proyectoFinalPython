@@ -121,31 +121,55 @@ class Camper(Persona):
   @staticmethod
   def solicitar_datos_camper(data):
     while True:
-      documento = input("Ingrese el documento: ")
-      if documento in data:
-        print('Ya hay un camper registrado con este documento')
-        continue
-      if not documento.isdigit():
-        print('Ingrese un numero trolazo')
-        continue
-      nombres = input("Ingrese los nombres: ")
-      apellidos = input("Ingrese los apellidos: ")
-      if not apellidos.isalpha() or not nombres.isalpha():
-        print('Datos en nombres y apellidos incorrectos porque contiene numeros')
-        continue
-      movil = input("Ingrese el número de móvil: ")
-      fijo = input("Ingrese el número fijo: ")
-      if not movil.isdigit() and not fijo.isdigit():
-        print("Valos ingresados en movil o fijo no validos")
-        continue
-      direccion = input("Ingrese la dirección: ")
-      acudiente = input("Ingrese el nombre del acudiente: ")
-      if not acudiente.isalpha():
-        print('Ingrese nombre del acudiente correctamente')
-        continue
-      # estado = input("Ingrese el estado: ")
-      # ruta = input("Ingrese la ruta: ")
-      return documento, nombres, apellidos, movil, fijo, direccion, acudiente
+        documento = input("Ingrese el documento: ")
+
+        if documento in data:
+            print('Ya hay un camper registrado con este documento')
+        elif not documento.isdigit():
+            print('Ingrese un número válido')
+        else:
+            break  # Si el documento es válido, salimos del bucle
+
+    while True:
+        nombres = input("Ingrese los nombres: ")
+
+        if not nombres.isalpha():
+            print('Datos en nombres incorrectos porque contiene números')
+        else:
+            break  # Si los nombres son válidos, salimos del bucle
+
+    while True:
+        apellidos = input("Ingrese los apellidos: ")
+
+        if not apellidos.isalpha():
+            print('Datos en apellidos incorrectos porque contiene números')
+        else:
+            break  # Si los apellidos son válidos, salimos del bucle
+
+    while True:
+        movil = input("Ingrese el número de móvil: ")
+        fijo = input("Ingrese el número fijo: ")
+
+        if not movil.isdigit() or not fijo.isdigit():
+            print("Valores ingresados en móvil o fijo no válidos")
+        else:
+            break  # Si los datos de contacto son válidos, salimos del bucle
+
+    direccion = input("Ingrese la dirección: ")
+
+    while True:
+        acudiente = input("Ingrese el nombre del acudiente: ")
+
+        if not acudiente.isalpha():
+            print('Ingrese nombre del acudiente correctamente')
+        else:
+            break  # Si el nombre del acudiente es válido, salimos del bucle
+
+    # Puedes descomentar estas líneas si necesitas ingresar más información
+    # estado = input("Ingrese el estado: ")
+    # ruta = input("Ingrese la ruta: ")
+
+    return documento, nombres, apellidos, movil, fijo, direccion, acudiente
 
 
   def setCamperInArea(self,sujeto):
