@@ -8,38 +8,14 @@
     },
     "direccion": "Direccion: El weon se doxea solo",
     "acudiente": "Martiza Pineda Celis",
-    "estado": "Aprobado",
-    "ruta": {
-        "nombres": "node",
-        "modulos": {
-            "fundamentos": [
-                "Introducci\u00f3n a la algoritmia",
-                "PSeInt",
-                "Python"
-            ],
-            "formal": [
-                "Java",
-                "JavaScript",
-                "C#"
-            ]
-        },
-        "sgdbPrincipal": "MySQL",
-        "sgdbAlternativo": "PostgreSQL"
-    },
-    "area": "Artemis",
-    "horario": "6:00 a 10:00",
+    "estado": "Inscrito",
+    "ruta": {},
+    "area": null,
+    "horario": null,
     "notas": {
         "nota teorica": 0,
-        "nota practica": 0,
-        "nota trabajo": 0,
-        "nota quices": 0
+        "nota practica": 0
     },
-    "notasHistory": {
-        "admision": {
-            "nota teorica": 99,
-            "nota practica": 99,
-            "nota final": 99.0
-        }
-    },
+    "notasHistory": {},
     "riesgo": null
 }

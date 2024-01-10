@@ -8,12 +8,10 @@
             "Trainer": null
         },
         "10:00 a 14:00": {
-            "integrantes": {
-                "1": "sfds dfsfs"
-            },
-            "capacidad": 1,
-            "rutas": "Desarrollo Backend",
-            "Trainer": "Ale"
+            "integrantes": {},
+            "capacidad": 0,
+            "rutas": null,
+            "Trainer": null
         },
         "14:00 a 18:00": {
             "integrantes": {},
