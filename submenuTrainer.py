@@ -40,7 +40,10 @@ def listarCamperModulo(RUTAS,DATA,TRAINERS):
     pass
   else: print('El trainer no tiene asignado esa ruta.');wait()
   pass
-    
+
+
+
+
 def submenutrainer(TRAINERS,RUTAS,DATA):
   OPCIONES = {
         "1" : "Listar Trainers",

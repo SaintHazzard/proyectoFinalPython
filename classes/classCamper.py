@@ -26,7 +26,7 @@ class Camper(Persona):
   def showDataAprobado(self):
      if self.estado == 'Aprobado':
       super().showData()
-      print(f'Estado: {self.estado}\nRuta: {self.ruta}\nNotas: {self.notas}')
+      print(f'Estado: {self.estado}\nRuta: {self.ruta["nombres"]}\nNotas: {self.notas}')
 
   def getPromedio(self):
     notaTeorica = self.notas['nota teorica']
@@ -130,13 +130,14 @@ class Camper(Persona):
         continue
       nombres = input("Ingrese los nombres: ")
       apellidos = input("Ingrese los apellidos: ")
-      if apellidos.isalpha() or nombres.isalpha():
+      if not apellidos.isalpha() or not nombres.isalpha():
         print('Datos en nombres y apellidos incorrectos porque contiene numeros')
         continue
       movil = input("Ingrese el número de móvil: ")
       fijo = input("Ingrese el número fijo: ")
       if not movil.isdigit() and not fijo.isdigit():
         print("Valos ingresados en movil o fijo no validos")
+        continue
       direccion = input("Ingrese la dirección: ")
       acudiente = input("Ingrese el nombre del acudiente: ")
       if not acudiente.isalpha():

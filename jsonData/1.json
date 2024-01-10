@@ -8,14 +8,51 @@
     },
     "direccion": "Monviso",
     "acudiente": "Mi madresita",
-    "estado": "Inscrito",
-    "ruta": {},
-    "area": null,
-    "horario": null,
+    "estado": "Aprobado",
+    "ruta": {
+        "nombres": "Ruta Java",
+        "modulos": {
+            "fundamentos": [
+                "Introducci\u00f3n a la algoritmia",
+                "PSeInt",
+                "Python"
+            ],
+            "formal": [
+                "Java",
+                "JavaScript",
+                "C#"
+            ],
+            "backend": [
+                "NetCore",
+                "Spring Boot",
+                "NodeJS",
+                "Express"
+            ]
+        },
+        "sgdbPrincipal": "PostgreSQL",
+        "sgdbAlternativo": "MongoDB"
+    },
+    "area": "Sputnik",
+    "horario": "6:00 a 10:00",
     "notas": {
         "nota teorica": 0,
-        "nota practica": 0
+        "nota practica": 0,
+        "nota trabajo": 0,
+        "nota quices": 0
     },
-    "notasHistory": {},
-    "riesgo": null
+    "notasHistory": {
+        "admision": {
+            "nota teorica": 100,
+            "nota practica": 100,
+            "nota final": 100.0
+        },
+        "Introducci\u00f3n a la algoritmia": {
+            "nota teorica": 100,
+            "nota practica": 100,
+            "nota trabajo": 100,
+            "nota quices": 100,
+            "nota final": 100.0
+        }
+    },
+    "riesgo": "Bajo"
 }

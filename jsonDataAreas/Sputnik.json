@@ -2,8 +2,10 @@
     "nombres": "Sputnik",
     "horarios": {
         "6:00 a 10:00": {
-            "integrantes": {},
-            "capacidad": 0,
+            "integrantes": {
+                "1": "Alejandro Martinez Santos"
+            },
+            "capacidad": 1,
             "rutas": "Ruta Java",
             "Trainer": "Miguel"
         },
