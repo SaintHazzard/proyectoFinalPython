@@ -15,10 +15,13 @@ def submenuregistro(data,TRAINERS):
   while True:
     elec = input("\n".join([f'{key}. {value}' for key,value in OPCIONES.items()]) + "\nEleccion: ")
     if elec is "1":
-      documentoCamper,*demasDatos=Camper.solicitar_datos_camper(data)
-      data[documentoCamper] = Camper(documentoCamper,*demasDatos)
-      crearJson(data[documentoCamper],f"{CARPETAS[0]}{documentoCamper}.json")
-      wait()
+      valCamper = Camper.solicitar_datos_camper(data,TRAINERS)
+      if valCamper is not None:
+        documentoCamper,*demasDatos=valCamper
+        data[documentoCamper] = Camper(documentoCamper,*demasDatos)
+        crearJson(data[documentoCamper],f"{CARPETAS[0]}{documentoCamper}.json")
+        wait()
+      else: continue
       pass
     elif elec is "2":
       documentoTrainer,*demasDatos=Entrenador.solcitarDatosTrainer(TRAINERS)

@@ -120,56 +120,75 @@ class Camper(Persona):
   
 
   @staticmethod
-  def solicitar_datos_camper(data,TRAINERS):
+  def solicitar_datos_camper(data, TRAINERS):
     while True:
-        documento = input("Ingrese el documento: ")
+        documento = input("Ingrese el documento (o 'salir' para terminar): ")
+
+        if documento.lower() == 'salir':
+            print("Saliendo del registro.")
+            return None  
 
         if documento in data or documento in TRAINERS:
             mostrar_error("Ya hay una persona registrada con este documento")
         elif not documento.isdigit():
             mostrar_error("Ingrese un número")
         else:
-            break  # Si el documento es válido, salimos del bucle
+            break 
 
     while True:
-        nombres = input("Ingrese los nombres: ")
+        nombres = input("Ingrese los nombres (o 'salir' para terminar): ")
+
+        if nombres.lower() == 'salir':
+            print("Saliendo del registro.")
+            return None  
 
         if not nombres.isalpha():
             mostrar_error("Datos en nombres incorrectos porque contiene números")
         else:
-            break  # Si los nombres son válidos, salimos del bucle
+            break  
 
     while True:
-        apellidos = input("Ingrese los apellidos: ")
+        apellidos = input("Ingrese los apellidos (o 'salir' para terminar): ")
+
+        if apellidos.lower() == 'salir':
+            print("Saliendo del registro.")
+            return None  
 
         if not apellidos.isalpha():
             mostrar_error("Datos en apellidos incorrectos porque contiene números")
         else:
-            break  # Si los apellidos son válidos, salimos del bucle
+            break  
 
     while True:
-        movil = input("Ingrese el número de móvil: ")
-        fijo = input("Ingrese el número fijo: ")
+        movil = input("Ingrese el número de móvil (o 'salir' para terminar): ")
+        fijo = input("Ingrese el número fijo (o 'salir' para terminar): ")
+
+        if movil.lower() == 'salir' or fijo.lower() == 'salir':
+            print("Saliendo del registro.")
+            return None  
 
         if not movil.isdigit() or not fijo.isdigit():
             mostrar_error("Valores ingresados en móvil o fijo no válidos")
         else:
-            break  # Si los datos de contacto son válidos, salimos del bucle
+            break 
 
-    direccion = input("Ingrese la dirección: ")
+    direccion = input("Ingrese la dirección (o 'salir' para terminar): ")
+
+    if direccion.lower() == 'salir':
+        print("Saliendo del registro.")
+        return None  
 
     while True:
-        acudiente = input("Ingrese el nombre del acudiente: ")
+        acudiente = input("Ingrese el nombre del acudiente (o 'salir' para terminar): ")
+
+        if acudiente.lower() == 'salir':
+            print("Saliendo del registro.")
+            return None  
 
         if not acudiente.isalpha():
             mostrar_error("Ingrese nombre del acudiente correctamente")
         else:
-            break  # Si el nombre del acudiente es válido, salimos del bucle
-
-    # Puedes descomentar estas líneas si necesitas ingresar más información
-    # estado = input("Ingrese el estado: ")
-    # ruta = input("Ingrese la ruta: ")
-
+            break
     return documento, nombres, apellidos, movil, fijo, direccion, acudiente
 
 
