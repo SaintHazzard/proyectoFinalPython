@@ -15,17 +15,23 @@ def submenucamper(data):
     elec = input("\n".join([f'{key}. {value}' for key,value in OPCIONES.items()]) + "\nEleccion: ")
     if elec in OPCIONES:
       if elec == "1":
-        print()
-        for i in data:
-          if data[i].estado:
-            print(f'Documento: {data[i].documento} {data[i].nombres} {data[i].apellidos}')
-        documento=input('Documento del camper a registrar nota: ')
-        
-        estado = data[documento].getState()
-        if estado == 'Inscrito' or "Aprobado":
-          data[documento].setNota()
-        else: print(f"Solo puede registrar nota de campers con el estado de 'Inscrito' y el estado del camper con documento {documento} es {data[documento].getState()}")
-        separacion()
+        while True:
+          try:
+            print()
+            for i in data:
+              if data[i].estado:
+                print(f'Documento: {data[i].documento} {data[i].nombres} {data[i].apellidos}')
+            print()
+            documento=input('Documento del camper a registrar nota: ')
+            if documento not in data:
+              raise ValueError
+            estado = data[documento].getState()
+            if estado == 'Inscrito' or "Aprobado":
+              data[documento].setNota()
+            else: print(f"Solo puede registrar nota de campers con el estado de 'Inscrito' y el estado del camper con documento {documento} es {data[documento].getState()}")
+            separacion()
+          except:
+            mostrar_error('El documento no esta registrado')
         
       elif elec is "2":
         for documento in data:

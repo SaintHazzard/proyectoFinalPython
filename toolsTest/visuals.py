@@ -15,7 +15,7 @@ if __name__ == "__main__":
    
 
 def mostrar_error(mensaje):
-    print(f"{'*' * 5} Error: {mensaje} No válido {'*' * 5}")
+    print(f"{'*' * 5} Error: {mensaje} {'*' * 5}")
     
 
 
