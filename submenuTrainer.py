@@ -24,8 +24,8 @@ def listarCamperModulo(RUTAS,DATA,TRAINERS):
   TRAINERSNAME = list(TRAINERS.keys())
   if len(TRAINERSNAME) > 0:
     if RUTASNAME[int(elec)-1] in TRAINERS[TRAINERSNAME[int(elecTrainer)-1]].rutas:
-      print(f'El trainer {TRAINERS[TRAINERSNAME[int(elecTrainer)-1]].nombres} con la ruta {RUTASNAME[int(elec)-1]}')
-      print(f'Los camper aprobados en el ultimo modulo con el Trainer {TRAINERS[TRAINERSNAME[int(elecTrainer)-1]].nombres} fueron: ')
+      print(f'Con el trainer {TRAINERS[TRAINERSNAME[int(elecTrainer)-1]].nombres} con la ruta {RUTASNAME[int(elec)-1]}: ')
+      print(f'\tLos camper aprobados en el ultimo modulo con el Trainer {TRAINERS[TRAINERSNAME[int(elecTrainer)-1]].nombres} fueron: ')
       for camper in DATA:
         if DATA[camper].ruta:
           if RUTASNAME[int(elec)-1] in DATA[camper].ruta['nombres'] and DATA[camper].riesgo == 'Bajo':
