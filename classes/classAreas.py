@@ -22,6 +22,9 @@ class areasEntrenamiento:
     clavesHorarios= list(horarios.keys())
     for i,hora in enumerate(horarios):
         print(f"\t{hora}: \n\t\tIntegrantes: {horarios[hora]['capacidad']}")
+        if horarios[hora]['Trainer']:
+          print(f'\t\tTrainer: {horarios[hora]["Trainer"]}')
+          print(f'\t\tRutas: {horarios[hora]["rutas"]}')
   
   def agregarIntegrante(self,integrante,carpeta,RUTAS):
     HORARIOS = {
@@ -44,7 +47,7 @@ class areasEntrenamiento:
   def validarNIntegtrantes(self,strHorario):
     if self.horarios[strHorario]["capacidad"] < 33:
       return True
-    else: False
+    else: print('El area esta llena');return False
     
   def SetearValores(self,strHorario,sujeto,RUTAS):
     integrantes = self.horarios[strHorario]["integrantes"]

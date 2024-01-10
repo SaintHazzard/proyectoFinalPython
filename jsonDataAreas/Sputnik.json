@@ -4,14 +4,14 @@
         "6:00 a 10:00": {
             "integrantes": {},
             "capacidad": 0,
-            "rutas": null,
-            "Trainer": null
+            "rutas": "Ruta Java",
+            "Trainer": "Miguel"
         },
         "10:00 a 14:00": {
             "integrantes": {},
             "capacidad": 0,
-            "rutas": null,
-            "Trainer": null
+            "rutas": "Django",
+            "Trainer": "Miguel"
         },
         "14:00 a 18:00": {
             "integrantes": {},

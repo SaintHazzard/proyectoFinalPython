@@ -19,7 +19,7 @@ def submenucamper(data):
         estado = data[documento].getState()
         if estado == 'Inscrito' or "Aprobado":
           data[documento].setNota()
-        else: print(f"Solo puede registrar nota de campers son el estado de 'Inscrito' y el estado del camper con documento {documento} es {data[documento].getState()}")
+        else: print(f"Solo puede registrar nota de campers con el estado de 'Inscrito' y el estado del camper con documento {documento} es {data[documento].getState()}")
         wait()
         
       elif elec is "2":

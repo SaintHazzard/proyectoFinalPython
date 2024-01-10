@@ -33,7 +33,7 @@ def submenuareasyrutas(DATA,AREAS,RUTAS,TRAINERS,CARPETAS):
       elif objetCamper.getPromedio() < 60 and len(objetCamper.notas) == 2 and (objetCamper.notas['nota teorica'] and objetCamper.notas['nota practica']):
         print(f"El camper ha reprobado la admision con nota promedio de:  {round(objetCamper.getPromedio(),2)} no se le puede asignar area")
       elif objetCamper.estado == 'Inscrito':
-        print(f'El camper esta en esta inscrito {objetCamper.notas} registrar las notas faltantes')
+        print(f'El camper esta en estado   inscrito {objetCamper.notas} registrar las notas faltantes')
       elif objetCamper.estado == 'Aprobado':
         print('El camper ya esta asignado a un area')
     elif elec is "2":

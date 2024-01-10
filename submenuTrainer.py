@@ -14,23 +14,28 @@ def listarCamperTrainer(RUTAS,DATA,TRAINERS):
 def listarCamperModulo(RUTAS,DATA,TRAINERS):
   print("Que ruta desea consultar: ")
   elec = input("\n".join([f'{key+1}. {value}' for key,value in enumerate(RUTAS.keys())]) + "\nEleccion: ")
+  if not elec.isdigit():
+    print('Eleccion no valida')
+    wait()
+    return
   print("Que trainer desea consultar: ")
-  elecTrainer = input("\n".join([f'{key+1}. {value}' for key,value in enumerate(TRAINERS.keys())]) + "\nEleccion: ")
+  elecTrainer = input("\n".join([f'{key+1}. {value.nombres}' for key,value in enumerate(TRAINERS.values())]) + "\nEleccion: ")
   RUTASNAME = list(RUTAS.keys())
   TRAINERSNAME = list(TRAINERS.keys())
-  if RUTASNAME[int(elec)-1] in TRAINERS[TRAINERSNAME[int(elecTrainer)-1]].rutas:
-    print(f'El trainer {TRAINERS[TRAINERSNAME[int(elecTrainer)-1]].nombres} con la ruta {RUTASNAME[int(elec)-1]}')
-    print(f'Los camper aprobados en el ultimo modulo con el Trainer {TRAINERS[TRAINERSNAME[int(elecTrainer)-1]].nombres} fueron: ')
-    for camper in DATA:
-      if DATA[camper].ruta:
-        if RUTASNAME[int(elec)-1] in DATA[camper].ruta['nombres'] and DATA[camper].riesgo == 'Bajo':
-          DATA[camper].showData()
-    wait()     
-    print(f'Los camper reprobados en el ultimo modulo con el Trainer {TRAINERS[TRAINERSNAME[int(elecTrainer)-1]].nombres} fueron: ')
-    for camper in DATA:
-      if DATA[camper].ruta:
-        if RUTASNAME[int(elec)-1] in DATA[camper].ruta['nombres'] and DATA[camper].riesgo == 'Alto':
-          DATA[camper].showData()
+  if len(TRAINERSNAME) > 0:
+    if RUTASNAME[int(elec)-1] in TRAINERS[TRAINERSNAME[int(elecTrainer)-1]].rutas:
+      print(f'El trainer {TRAINERS[TRAINERSNAME[int(elecTrainer)-1]].nombres} con la ruta {RUTASNAME[int(elec)-1]}')
+      print(f'Los camper aprobados en el ultimo modulo con el Trainer {TRAINERS[TRAINERSNAME[int(elecTrainer)-1]].nombres} fueron: ')
+      for camper in DATA:
+        if DATA[camper].ruta:
+          if RUTASNAME[int(elec)-1] in DATA[camper].ruta['nombres'] and DATA[camper].riesgo == 'Bajo':
+            DATA[camper].showData()
+      wait()     
+      print(f'Los camper reprobados en el ultimo modulo con el Trainer {TRAINERS[TRAINERSNAME[int(elecTrainer)-1]].nombres} fueron: ')
+      for camper in DATA:
+        if DATA[camper].ruta:
+          if RUTASNAME[int(elec)-1] in DATA[camper].ruta['nombres'] and DATA[camper].riesgo == 'Alto':
+            DATA[camper].showData()
     wait()     
     pass
   else: print('El trainer no tiene asignado esa ruta.');wait()

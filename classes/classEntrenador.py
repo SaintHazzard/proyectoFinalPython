@@ -12,16 +12,26 @@ class Entrenador:
       
   @staticmethod
   def solcitarDatosTrainer(TRAINERS):
-    documento = input("Ingrese el documento: ")
-    if documento not in TRAINERS:
-      nombres = input("Ingrese los nombres: ")
-      apellidos = input("Ingrese los apellidos: ")
-      movil = input("Ingrese el número de móvil: ")
-      print('Trainer registrado')
-      return documento,nombres,apellidos,movil,
-    else:
-      print("El trainer ya esta creado")
-      return list(TRAINERS[documento].__dict__.values())
+    while True:
+      documento = input("Ingrese el documento: ")
+      if not documento.isdigit():
+        print('Ingrese solo numeros en el numero de documento: ')
+        continue
+      if documento not in TRAINERS:
+        nombres = input("Ingrese los nombres: ")
+        apellidos = input("Ingrese los apellidos: ")
+        if not nombres.isalpha() and apellidos.isalpha():
+          print('Ingrese letras en nombres y apellidos')
+          continue
+        movil = input("Ingrese el número de móvil: ")
+        if not movil.isdigit():
+          print('Ingrese solo numero en el numero movil')
+          continue
+        print('Trainer registrado')
+        return documento,nombres,apellidos,movil,
+      else:
+        print("El documento esta relacionado a otro trainer")
+        return list(TRAINERS[documento].__dict__.values())
         
       
     
